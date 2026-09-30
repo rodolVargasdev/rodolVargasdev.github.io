@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Looker Studio reporting | Rodolfo Vargas</title>
+<meta name="description" content="Self-service dashboards and a versioned written report for an epidemiology unit, plus an hourly training campus report, built in Looker Studio on a cloud warehouse view and Google Sheets.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Looker Studio reporting | Rodolfo Vargas">
+<meta property="og:description" content="Self-service dashboards and a versioned written report for an epidemiology unit, plus an hourly training campus report, built in Looker Studio on a cloud warehouse view and Google Sheets.">
+<meta property="og:image" content="../assets/screens/looker-01-tablero-agudas.webp">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#07111F">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap">
+<a class="brand" href="../index.html">Rodolfo Vargas</a>
+<nav aria-label="Main">
+<a href="../index.html#approach">Approach</a>
+<a href="../index.html#cases">Cases</a>
+<a href="../index.html#stack">Stack</a>
+<a href="../index.html#goals">Learning</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">Light</button>
+</div></header>
+<main id="main">
+<div class="wrap">
+<div class="case-head">
+<a class="back" href="../index.html#cases">All cases</a>
+<h1>Looker Studio reporting</h1>
+<p class="lede">Self-service dashboards and a versioned written report for an epidemiology unit, plus an hourly training campus report, all built in Looker Studio on top of a cloud warehouse view and Google Sheets.</p>
+<div class="facts"><ul class="figs"><li><strong>2</strong><span>dashboards, acute and chronic conditions</span></li><li><strong>57</strong><span>pages in the written report, version 3 of 2026-07-06</span></li><li><strong>Hourly</strong><span>refresh of the training campus report, by design</span></li></ul><p class="muted" style="margin-top:12px;font-size:.9rem">Delivered in 2026. Counts taken from the project files. <a href="#screens">See the screens</a></p></div>
+</div>
+<div class="prose">
+<section class="part"><h2>Problem</h2>
+<p>The epidemiology unit needed to see acute and chronic conditions without waiting for someone to cut the data by hand. Three things got in the way:</p>
+<ul>
+<li><strong>Inconsistent extracts.</strong> Raw extracts from the clinical platform could not be charted directly.</li>
+<li><strong>No shared grouping.</strong> Diagnosis codes were not grouped into the categories epidemiologists read (respiratory infections, dengue, hypertension, diabetes), and there was no agreed rule for rates or patient counts.</li>
+<li><strong>Locked campus data.</strong> The training campus team had course and student data inside the learning platform's database, with no current report, and its public web API was being blocked.</li>
+</ul>
+</section>
+<section class="part"><h2>Solution</h2>
+<p>Two dashboards and one hourly report, each documented as text so the logic can be read and reproduced.</p>
+<pre>Clinical extracts -&gt; Python cleaning (Colab) -&gt; warehouse view (BigQuery) -&gt; Looker Studio
+Learning platform DB -&gt; read-only scheduled job (hourly) -&gt; Google Sheets -&gt; Looker Studio</pre>
+<ul>
+<li><strong>Acute conditions dashboard.</strong> A combination chart of consultations and a rate per 10,000 by epidemiological week, category and disease breakdowns, and dengue totals. Six classification columns group diagnosis codes into the categories the unit reads.</li>
+<li><strong>Chronic conditions dashboard.</strong> Hypertension, diabetes, dyslipidemia, COPD/asthma and chronic kidney disease, with prevalence scorecards, nine age groups and a transition flag that shows how patients move between classifications.</li>
+<li><strong>Logic as text.</strong> Calculated fields and filters are kept as versioned text files instead of living only inside the tool. Parameters let one table switch between counting people and counting appointments, or between pathologies.</li>
+<li><strong>A written report with a reusable generator.</strong> The chronic dashboard is documented in a Word and PDF report (version 3, 57 pages) with data cleaning as part one and the dashboard as part two. A shared style guide and a docx-js generator make the next report repeatable.</li>
+<li><strong>Training campus report.</strong> An hourly, read-only job inside the cluster queries the learning platform's database and rewrites a Google Sheet through the Sheets API, which Looker Studio reads. Four delivery routes were documented (notebook, Apps Script, Cloud Run, Kubernetes CronJob). The in-cluster job was chosen because it avoids the public web API and keeps the database private.</li>
+</ul>
+</section>
+<section class="part"><h2>Impact</h2>
+<p>Figures counted from the project files, as of 2026-09-30:</p>
+<ul>
+<li>Two dashboards (acute and chronic conditions) and one campus report.</li>
+<li>12 text files for the acute dashboard: 4 calculated-field files, 6 classification files and 2 filter or parameter files. The chronic dashboard has about two dozen calculated fields in one reference file.</li>
+<li>A written report in 3 versions (2026-07-05 and 2026-07-06), with a change history per version. The final one is 57 pages.</li>
+<li>Campus report refreshed every hour by design (schedule <code>0 * * * *</code>), with an 11-column course-by-student layout.</li>
+<li>Faster access to information for the unit: the cuts they asked for became filters and scorecards instead of ad hoc requests.</li>
+<li>No usage numbers are published here, because none were recorded in the files.</li>
+</ul>
+</section>
+<section class="part"><h2>My role</h2>
+<ul>
+<li>Requirement with the epidemiology unit: what to measure, the disease and age groupings, and the rate definitions.</li>
+<li>Dashboard design in Looker Studio.</li>
+<li>Calculated fields and filters, including the diagnosis-code classification and the patient transition flag.</li>
+<li>Data cleaning of the source extracts with Python.</li>
+<li>Report writing: the versioned written report and the shared style guide.</li>
+<li>Campus report: I designed and documented the pipeline and its runbook. The records do not establish who deployed the job on institutional infrastructure, so this case claims the design and documentation only.</li>
+</ul>
+</section>
+<section class="part"><h2>Stack</h2>
+<ul>
+<li>Looker Studio (free tier, calculated fields in its own formula language, parameters and controls).</li>
+<li>Google BigQuery as the warehouse view behind the dashboards.</li>
+<li>Google Sheets and the Google Sheets API as the campus report source.</li>
+<li>Python and Google Colab for cleaning the extracts and for the first version of the campus extraction.</li>
+<li>Kubernetes CronJob, Docker image and Artifact Registry for the hourly campus job; Cloud Run and Apps Script were documented as alternatives.</li>
+<li>docx-js (Node.js) for the report generator, with APA 7 referencing.</li>
+</ul>
+</section>
+<section class="part"><h2>Human in the loop in this project</h2>
+<p class="loop-note">Evidence paths below refer to private repositories and are shown as plain text.</p>
+<ul>
+<li>Dashboard documentation and change history: <code>reporteria/tableros/epidemiologico-patologias-cronicas/README.md</code> and <code>VERSIONES.md</code> (versions 1 to 3, 2026-07-05 to 2026-07-06).</li>
+<li>Original dashboard specification, dated: <code>reporteria/tableros/epidemiologico-patologias-cronicas/fuentes/20260705_spec-dashboard-epidemiologico.pdf</code>.</li>
+<li>Calculated fields and filters as text: <code>reporteria/tableros/epidemiologico-patologias-agudas/campos_calculados_tasas_todas.txt</code>, <code>filtro_recuento_personas_citas.txt</code>, <code>filtro_patologia_vih_tb.txt</code>; chronic: <code>fuentes/campos_calculados_looker.md</code>.</li>
+<li>Known limits written down, for example the week definition (ISO week versus the national epidemiological week) noted in <code>campos_calculados_tasas.txt</code>.</li>
+<li>Delivered report: <code>salidas/20260706_informe-epidemiologico_v3.pdf</code>; shared style guide <code>_comun/GUIA_ESTILO_REPORTES_[project].md</code>; generator <code>_comun/generador/generar_informe.js</code> and its README, with the rule that the delivered file wins over the generator.</li>
+<li>Campus report runbook: <code>docs/REPORTE_[project]_SHEETS_GKE.md</code>, <code>cloudrun_[project]_sync/README.md</code>, <code>appscript/README.md</code> and the extraction notebook <code>[project]_looker_reporte.ipynb</code>.</li>
+<li>Why this work led to the next case: <code>app/docs/adr/0001-stack-hibrido.md</code> records the need for an application that overcomes Looker Studio's limits.</li>
+</ul>
+</section>
+<section class="part"><h2>Status</h2>
+<p>The dashboards and the written report are delivered. The campus pipeline is designed and documented. These dashboards reached Looker Studio's limits (cost per query, slow interactive filtering, figures that could not be traced), which led to the <a href="epidemiological-analytics.html">epidemiological analytics platform</a> case.</p>
+</section>
+<section class="part" id="screens"><h2>Screens</h2>
+<div class="gallery">
+<figure><img src="../assets/screens/looker-01-tablero-agudas.webp" width="1440" height="900" loading="lazy" alt="Looker Studio report with a date range, parameter controls, scorecards, a combination chart of consultations and a rate per 10,000, and a disease table."><figcaption>Acute conditions dashboard with parameter controls, scorecards, a weekly combination chart and dengue totals.</figcaption></figure>
+<figure><img src="../assets/screens/looker-02-tablero-cronicas.webp" width="1440" height="900" loading="lazy" alt="Looker Studio report with six prevalence scorecards, bars by classification and age group, a monthly trend and a patient transition flow."><figcaption>Chronic conditions dashboard with prevalence scorecards, age groups and a patient transition flow.</figcaption></figure>
+<figure><img src="../assets/screens/looker-03-reporte-campus.webp" width="1440" height="900" loading="lazy" alt="Looker Studio report with course and student scorecards, a bar chart of enrollments, a progress donut, a monthly line and a detail table."><figcaption>Training campus report with course and student scorecards and an 11-column detail table, refreshed hourly.</figcaption></figure>
+</div>
+<p class="gallery-note">Information in these screens has been anonymized.</p>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-foot"><div class="wrap">Rodolfo Vargas. Static site, no tracking.</div></footer>
+</body>
+</html>

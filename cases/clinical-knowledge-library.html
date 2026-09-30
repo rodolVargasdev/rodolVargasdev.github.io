@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinical knowledge library | Rodolfo Vargas</title>
+<meta name="description" content="A single source of truth for clinical protocols in two generations: an Apps Script first version and a Google Cloud version with retrieval-augmented answers.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clinical knowledge library | Rodolfo Vargas">
+<meta property="og:description" content="A single source of truth for clinical protocols in two generations: an Apps Script first version and a Google Cloud version with retrieval-augmented answers.">
+<meta property="og:image" content="../assets/screens/library-01-dashboard.webp">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#07111F">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap">
+<a class="brand" href="../index.html">Rodolfo Vargas</a>
+<nav aria-label="Main">
+<a href="../index.html#approach">Approach</a>
+<a href="../index.html#cases">Cases</a>
+<a href="../index.html#stack">Stack</a>
+<a href="../index.html#goals">Learning</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">Light</button>
+</div></header>
+<main id="main">
+<div class="wrap">
+<div class="case-head">
+<a class="back" href="../index.html#cases">All cases</a>
+<h1>Clinical knowledge library</h1>
+<p class="lede">Single source of truth for medical and protocol guidance at a national public telemedicine service, in two generations: a first version on Google Apps Script and the current version on Google Cloud with retrieval-augmented answers.</p>
+<div class="facts"><ul class="figs"><li><strong>200 to 1,000</strong><span>articles</span></li><li><strong>400+</strong><span>physicians as users</span></li></ul><p class="muted" style="margin-top:12px;font-size:.9rem">Current version in use. Figures as reported in 2026. <a href="#screens">See the screens</a></p></div>
+</div>
+<div class="prose">
+<section class="part"><h2>Problem</h2>
+<p>Physicians need one authoritative place for every medical action and protocol. Without it, staff follow different versions of a procedure, and the quality team has no way to enforce a standard. At this service, not consulting the library is treated as non-compliance and is flagged by the quality team.</p>
+<p>So the library has to be standardized, current, easy to search and trustworthy: a physician who asks a question must get an answer that comes from the approved articles, with its source, and not from memory or improvisation.</p>
+</section>
+<section class="part"><h2>Solution</h2>
+<p><strong>Version 1 (Google Apps Script, first version).</strong> A web app with a React single-page front end, Google Sheets as the database and Drive for source files. It delivered the editorial cycle end to end: publish and update articles, review with internal comments, version history, type and tag taxonomy, bulk import from spreadsheets, a dashboard, and email and chat notifications. About 2,400 lines of Apps Script back end.</p>
+<p><strong>Version 2 (current, Google Cloud).</strong> A NestJS back end with PostgreSQL and vector search, a React front end, and a retrieval-augmented assistant.</p>
+<ul>
+<li>Articles follow an editorial workflow (draft, needs review, published, archived) with automatic versioning, review comments and immutable slugs.</li>
+<li>Access by role and by department, plus per-article visibility (public, department, restricted), applied consistently to search and to the assistant.</li>
+<li>Two separate paths: fast text search that consumes no AI tokens, and an assistant that is invoked explicitly. The assistant chunks published articles, retrieves the relevant passages and answers from them with sources.</li>
+<li>A curated question bank: answers approved by an auditor are stored and reused without calling the model, so common questions become fast, deterministic and free, while new questions are answered by the model and queued for review.</li>
+<li>Bulk import from version 1, notifications by email, chat and webhook, and an audit trail.</li>
+</ul>
+<p>Why the migration: Apps Script hit its platform limits, and the service wanted to add retrieval-augmented answers over the article base.</p>
+</section>
+<section class="part"><h2>Impact</h2>
+<p>Figures are ranges, as of August 2026:</p>
+<ul>
+<li>Articles: 200 to 1,000.</li>
+<li>Users: all physicians of the service, more than 400.</li>
+<li>One shared library replaces scattered guidance, and compliance can now be checked against a single source.</li>
+</ul>
+<p>Checks recorded in the repository: a repeatable battery against the assistant reported 18 pass, 1 warning and 0 failures on 2026-07-04, and a functional module audit reported 54 of 54 checks passing (<code>docs/verificacion-agente.md</code>).</p>
+</section>
+<section class="part"><h2>My role</h2>
+<ul>
+<li>Requirement and domain, gathered from the physicians and the quality team.</li>
+<li>Screen design.</li>
+<li>Development with AI assistance, following written plans and decision records.</li>
+<li>Delivery and documentation for both generations, including the migration path from version 1 to version 2.</li>
+</ul>
+</section>
+<section class="part"><h2>Stack</h2>
+<p><strong>Version 1:</strong> Google Apps Script (V8 runtime), Google Sheets and Drive, React 18 (UMD build) in a single HTML file, Quill editor, Fuse.js search.</p>
+<p><strong>Version 2</strong>, versions read from the installed packages:</p>
+<ul>
+<li>NestJS 11.1.17, TypeScript 5.9.3, Prisma 5.22.0.</li>
+<li>PostgreSQL 15 with pgvector (container image <code>pgvector/pgvector:pg15</code>), embeddings stored as 768-dimension vectors.</li>
+<li>Vertex AI SDK 1.12.0 with Gemini 2.5 Flash (default generation model) and a Gemini embedding model.</li>
+<li>React 18.3.1, Vite 6.4.2, Tailwind CSS 3.4.19.</li>
+<li>Jest 29.7.0, Docker, Cloud Run and Cloud SQL as the documented deployment target.</li>
+</ul>
+</section>
+<section class="part"><h2>Human in the loop in this project</h2>
+<p class="loop-note">Evidence paths below refer to private repositories and are shown as plain text.</p>
+<ul>
+<li>The product includes a human gate: a curator or auditor approves each answer before it is reused, and can merge equivalent phrasings (<code>docs/plan-l3-l4-qabank-curacion.md</code>, <code>docs/arquitectura-determinismo-rag.md</code>).</li>
+<li>Written audit of the business logic, with the owner's decisions recorded: <code>docs/auditoria-negocio-2026-06.md</code>.</li>
+<li>Repeatable verification of the assistant: <code>docs/verificacion-agente.md</code>, <code>scripts/agent-battery.mjs</code>, <code>scripts/module-audit.mjs</code>.</li>
+<li>Numbered decisions with reasons: <code>docs/14-decisiones.md</code>.</li>
+<li>Migration procedure: <code>docs/09-import-y-migracion.md</code>; the retired version 1 source is kept inside the repository as a legacy folder for reference.</li>
+<li>Documentation index for anyone joining: <code>docs/00-indice.md</code>.</li>
+</ul>
+</section>
+<section class="part"><h2>Status</h2>
+<p>Version 2 is the current version and is in use by the physicians of the service. Version 1 was the first version and is retired in favor of version 2. Deployment details are not published.</p>
+</section>
+<section class="part" id="screens"><h2>Screens</h2>
+<div class="gallery">
+<figure><img src="../assets/screens/library-01-dashboard.webp" width="1440" height="900" loading="lazy" alt="Dashboard with article counts, charts by type and review state, and a recent activity list."><figcaption>Clinical Library dashboard for a 300-article knowledge base across four departments, by type and review status.</figcaption></figure>
+<figure><img src="../assets/screens/library-02-articulo.webp" width="1440" height="900" loading="lazy" alt="Article page with reading view, review comments, state badge and version history."><figcaption>Article view with reading mode, inline review comments, review state and full version history.</figcaption></figure>
+<figure><img src="../assets/screens/library-03-busqueda.webp" width="1440" height="900" loading="lazy" alt="Search results page with type badges, summaries and tags."><figcaption>Semantic search across the clinical library with type badges, summaries and tags.</figcaption></figure>
+</div>
+<p class="gallery-note">Information in these screens has been anonymized.</p>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-foot"><div class="wrap">Rodolfo Vargas. Static site, no tracking.</div></footer>
+</body>
+</html>

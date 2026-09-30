@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinical AI accuracy tracker | Rodolfo Vargas</title>
+<meta name="description" content="A web application that measures how often an AI diagnostic suggestion holds up under physician review, with a two-stage blind evaluation flow.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Clinical AI accuracy tracker | Rodolfo Vargas">
+<meta property="og:description" content="A web application that measures how often an AI diagnostic suggestion holds up under physician review, with a two-stage blind evaluation flow.">
+<meta property="og:image" content="../assets/screens/accuracy-01-reportes.webp">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#07111F">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap">
+<a class="brand" href="../index.html">Rodolfo Vargas</a>
+<nav aria-label="Main">
+<a href="../index.html#approach">Approach</a>
+<a href="../index.html#cases">Cases</a>
+<a href="../index.html#stack">Stack</a>
+<a href="../index.html#goals">Learning</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">Light</button>
+</div></header>
+<main id="main">
+<div class="wrap">
+<div class="case-head">
+<a class="back" href="../index.html#cases">All cases</a>
+<h1>Clinical AI accuracy tracker</h1>
+<p class="lede">Web application that measures, case by case and under medical review, how often an AI diagnostic suggestion holds up.</p>
+<div class="facts"><ul class="figs"><li><strong>75 to 90%</strong><span>agreement, AI and evaluators</span></li><li><strong>5,000 to 50,000</strong><span>cases evaluated</span></li><li><strong>6 to 20</strong><span>medical evaluators</span></li></ul><p class="muted" style="margin-top:12px;font-size:.9rem">In use for evaluation rounds. Figures as reported in 2026. <a href="#screens">See the screens</a></p></div>
+</div>
+<div class="prose">
+<section class="part"><h2>Problem</h2>
+<p>A national public telemedicine service uses an AI model that suggests diagnoses from the clinical note of a teleconsultation. To trust that suggestion, or to improve it, the service needs an evidence base: for thousands of real cases, what did a physician conclude on their own, and did that physician agree with the AI's suggestion and with the final recorded diagnosis?</p>
+<p>That evidence needs traceability. Each judgment must be attributable to an evaluator, the physician's own diagnosis must not be biased by seeing the AI answer first, and the results must be countable by evaluator, batch and level of agreement. A spreadsheet handed around between reviewers cannot guarantee any of that.</p>
+</section>
+<section class="part"><h2>Solution</h2>
+<p>A role-based web application with a two-stage evaluation flow:</p>
+<ol>
+<li>An administrator imports a batch of cases from CSV (the importer maps columns flexibly, so files from different sources load without manual reformatting) and distributes them evenly across evaluators, with manual adjustment.</li>
+<li>Stage one: the evaluating physician sees the clinical data and writes their own diagnosis. Saving locks it.</li>
+<li>Stage two: the AI suggestion, the reference assessment and the final diagnosis are revealed, and the physician records agree, disagree or not applicable on each. Saving finalizes the case.</li>
+<li>Administrators can review and correct any case (edits are stamped with who and when). Reports break results down by evaluator, batch and level of agreement, with CSV export.</li>
+</ol>
+<p>Business rules (record state machine, permissions, batch distribution, CSV mapping, report metrics) live in a pure domain layer covered by unit tests. The design is prepared to scale to very large batches: chunked imports, aggregated queries and streamed exports.</p>
+</section>
+<section class="part"><h2>Impact</h2>
+<p>Figures are ranges, as of August 2026:</p>
+<ul>
+<li>Reported agreement between the AI suggestion and medical evaluators: 75 to 90 percent.</li>
+<li>Cases evaluated: 5,000 to 50,000.</li>
+<li>Medical evaluators: 6 to 20.</li>
+</ul>
+<p>The value is a defensible number: every percentage traces back to individual physician judgments recorded in a fixed order.</p>
+</section>
+<section class="part"><h2>My role</h2>
+<ul>
+<li>Gathered the requirement and the domain from the requesting area and turned it into a written specification.</li>
+<li>Designed the screens and the evaluation flow.</li>
+<li>Developed the application with AI assistance, following a written plan and decision records.</li>
+<li>Prepared the delivery: containers, configuration, deployment runbook and documentation.</li>
+</ul>
+</section>
+<section class="part"><h2>Stack</h2>
+<ul>
+<li>Next.js 15.5.19 (App Router, Server Actions), React 19.2.7, TypeScript.</li>
+<li>PostgreSQL 16 (container image <code>postgres:16-alpine</code>), Prisma 6.19.3.</li>
+<li>Auth.js (next-auth) 5.0.0-beta.25 with credentials; passwords hashed with bcrypt.</li>
+<li>Zod, React Hook Form, TanStack Query and Table, Recharts, shadcn/ui with Tailwind CSS.</li>
+<li>Vitest 2.1.9 for unit tests, Playwright 1.60.0 for end-to-end, ESLint, Prettier, Husky and commitlint.</li>
+<li>Node 22, pnpm 9.12.0, Docker; deployment target documented as Cloud Run with a serverless PostgreSQL.</li>
+</ul>
+</section>
+<section class="part"><h2>Human in the loop in this project</h2>
+<p class="loop-note">Evidence paths below refer to private repositories and are shown as plain text.</p>
+<ul>
+<li>The product itself is a human-in-the-loop design: the physician commits their own diagnosis before the AI answer is revealed (<code>HANDOFF.md</code>, evaluation flow).</li>
+<li>Decisions recorded with reasons and discarded alternatives: <code>docs/adr/0001-stack-y-arquitectura.md</code>, <code>docs/adr/0002-estrategia-datos-a-escala.md</code>.</li>
+<li>Business rules isolated and tested: <code>src/domain/registro/estado.ts</code> with <code>estado.test.ts</code>, <code>src/domain/permisos.ts</code> with <code>permisos.test.ts</code>, <code>src/domain/asignacion/distribuir.test.ts</code>.</li>
+<li>Gate before merge: <code>.husky/pre-commit</code>, <code>commitlint.config.cjs</code>, <code>.github/workflows/ci.yml</code>.</li>
+<li>Handoff and runbook: <code>HANDOFF.md</code>, <code>DEPLOY.md</code>, <code>docs/replicar-despliegue-cloud-run.md</code>.</li>
+</ul>
+</section>
+<section class="part"><h2>Status</h2>
+<p>In use for evaluation rounds. The repository documents a deployment path (container image, CI/CD workflows, runbook); the exact production state is not published.</p>
+</section>
+<section class="part" id="screens"><h2>Screens</h2>
+<div class="gallery">
+<figure><img src="../assets/screens/accuracy-01-reportes.webp" width="1440" height="900" loading="lazy" alt="Report screen with bar charts of agreement per evaluator, a donut chart of the global distribution and a per-batch table."><figcaption>AI Accuracy Tracker: agreement report comparing AI diagnoses against clinician evaluators, with per-evaluator and per-batch breakdowns.</figcaption></figure>
+<figure><img src="../assets/screens/accuracy-02-evaluar.webp" width="1440" height="900" loading="lazy" alt="Evaluation screen where the AI suggestion is revealed next to agree, disagree and not applicable choices."><figcaption>Two-stage blind evaluation: the clinician records a diagnosis first, then the AI suggestion is revealed for comparison.</figcaption></figure>
+<figure><img src="../assets/screens/accuracy-03-admin-lote.webp" width="1440" height="900" loading="lazy" alt="Batch administration screen listing evaluator assignments with progress bars and record status."><figcaption>Batch administration view showing evaluator assignments, completion progress and record-level status.</figcaption></figure>
+</div>
+<p class="gallery-note">Information in these screens has been anonymized.</p>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-foot"><div class="wrap">Rodolfo Vargas. Static site, no tracking.</div></footer>
+</body>
+</html>

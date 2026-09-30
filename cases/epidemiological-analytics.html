@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epidemiological analytics platform | Rodolfo Vargas</title>
+<meta name="description" content="An epidemiological surveillance platform that mirrors a cloud warehouse view locally and serves dashboards, bulletins and a surveillance center with auditable figures.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Epidemiological analytics platform | Rodolfo Vargas">
+<meta property="og:description" content="An epidemiological surveillance platform that mirrors a cloud warehouse view locally and serves dashboards, bulletins and a surveillance center with auditable figures.">
+<meta property="og:image" content="../assets/screens/analytics-01-tablero-agudas.webp">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#07111F">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap">
+<a class="brand" href="../index.html">Rodolfo Vargas</a>
+<nav aria-label="Main">
+<a href="../index.html#approach">Approach</a>
+<a href="../index.html#cases">Cases</a>
+<a href="../index.html#stack">Stack</a>
+<a href="../index.html#goals">Learning</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">Light</button>
+</div></header>
+<main id="main">
+<div class="wrap">
+<div class="case-head">
+<a class="back" href="../index.html#cases">All cases</a>
+<h1>Epidemiological analytics platform</h1>
+<p class="lede">Epidemiological surveillance platform that mirrors a cloud warehouse view into a local analytical database, and serves dashboards, bulletins, reports and a surveillance center on top of that copy, so that querying costs nothing, answers in milliseconds and every figure can be audited.</p>
+<div class="facts"><ul class="figs"><li><strong>6 to 20</strong><span>users</span></li><li><strong>0</strong><span>warehouse cost per interaction</span></li><li><strong>4.18 million</strong><span>appointments, as of 2026-08-24</span></li></ul><p class="muted" style="margin-top:12px;font-size:.9rem">In active use. Figures as reported in 2026. <a href="#screens">See the screens</a></p></div>
+</div>
+<div class="prose">
+<section class="part"><h2>Problem</h2>
+<p>The epidemiology unit worked from a cloud data warehouse. Four problems came up together:</p>
+<ul>
+<li><strong>Query cost.</strong> Every dashboard interaction that hit the warehouse cost money and, at volume, raised security alarms on a monitored data source.</li>
+<li><strong>Slow reports.</strong> Interactive filtering over millions of appointments was not fast enough on demand.</li>
+<li><strong>Figures nobody could defend.</strong> A number on a screen could not be traced to the rule that produced it, who looked at it, or how to reproduce it.</li>
+<li><strong>Slow access to information.</strong> Getting a specific cut of the data meant waiting for someone to produce it.</li>
+</ul>
+</section>
+<section class="part"><h2>Solution</h2>
+<p>A single application, one container image with four roles, that copies the warehouse view once per synchronization cycle and serves everything from the copy.</p>
+<pre>Cloud warehouse (read-only) -&gt; one scan -&gt; Parquet -&gt; local analytical database -&gt; API + dashboards</pre>
+<ul>
+<li>Cost moves from "per query" to "once per synchronization cycle". The synchronization runs a dry-run first and caps billable bytes; the dashboards never touch the cloud.</li>
+<li>Dashboards are declarative: each chart is a specification (query, encoding, filters) rendered by a generic front end, and a chart's filters are derived from its own query, so it cannot claim to filter what it does not.</li>
+<li>Auditable figures: any number can open a provenance certificate with the exact query and a deterministic fingerprint of the table, exportable to Word. Metric definitions are versioned, a published version freezes the catalog, and a command reproduces a figure from a given version.</li>
+<li>Freshness is shown, not hidden: each chart carries a data-cutoff stamp.</li>
+<li>Reporting: an epidemiological bulletin and executive reports in Word and Excel.</li>
+<li>Surveillance center (the rules-based engine below), integrated into the same application with its own reviewer role.</li>
+</ul>
+<h3>Benefits of the rules-based surveillance engine</h3>
+<p>The surveillance center runs a rules-based engine that was integrated into the platform. Its rules are deterministic and versioned rather than learned, so the same input always gives the same classification, which is what lets a clinician and an auditor defend a result.</p>
+<ul>
+<li>It runs six rule engines (dengue, measles, measles emergency, syphilis, pneumonia, respiratory symptomatic) that classify and prioritize cases, so reviewers start from the cases that need attention instead of reading every record.</li>
+<li>It does not diagnose and does not declare outbreaks: it surfaces signals for human review, and reviewers record their judgment and notes on each case.</li>
+<li>Its logic is separated from the interface and protected by golden tests, so a rule change is checked for equivalence before any result changes.</li>
+<li>Analyses run automatically after each synchronization from the analytical copy; nobody uploads files, which removes a manual step and a source of inconsistency.</li>
+<li>Every relevant action leaves an audit record, and access is limited by role (a dedicated reviewer role exists).</li>
+</ul>
+<p>The engine originated as a separate surveillance project. I ported and integrated it into the platform, and extended it together with its original team: it was tested for equivalence and connected to the shared mirror and roles.</p>
+</section>
+<section class="part"><h2>Impact</h2>
+<p>Figures as of August 2026:</p>
+<ul>
+<li>Users: 6 to 20.</li>
+<li>Query cost against the warehouse: zero per interaction, measured in the project's performance notes. One historical scan of the source view feeds the mirror.</li>
+<li>Reports: dashboards answer from a local copy; a warm cache answers in about 1.5 ms, and the audit on 2026-09-29 measured all charts responding without failure.</li>
+<li>Figures can be audited: provenance certificate, fingerprint, versioned definitions and a reproduce command.</li>
+<li>Faster access to information for the unit, through self-service dashboards instead of ad hoc requests.</li>
+<li>Scale: about 4.18 million appointments in the analytical table as of 2026-08-24.</li>
+</ul>
+</section>
+<section class="part"><h2>My role</h2>
+<ul>
+<li>Requirement and domain, with the epidemiology unit and the medical management area, including a formal dimensional-model request for a dedicated analytical dataset.</li>
+<li>Screen and dashboard design.</li>
+<li>Development with AI assistance, following written specifications, decision records and audits.</li>
+<li>Prepared the release package (containers, configuration, migrations, documentation) and the handoff to the infrastructure team.</li>
+</ul>
+</section>
+<section class="part"><h2>Stack</h2>
+<p>Versions from the project's exact-pinned constraints file and stack document:</p>
+<ul>
+<li>Back end: Python 3.12, FastAPI 0.139.0, uvicorn 0.50.2, Pydantic 2.13.4.</li>
+<li>Analytics: DuckDB 1.5.4, pyarrow 24.0.0, dbt for the transformation models, Parquet exchange with the warehouse via the BigQuery client (google-cloud-bigquery 3.42.1).</li>
+<li>Surveillance persistence: PostgreSQL 16, SQLAlchemy 2.0.52, Alembic 1.19.1, Procrastinate 3.9.0 (job queue).</li>
+<li>Front end: React 18.3.1, Vite 7.3.6, TypeScript 5.9.3, Apache ECharts 6.1.0, Vitest 4.1.11.</li>
+<li>Quality: pytest 9.1.1, ruff 0.15.20, mypy 2.2.0 in strict mode.</li>
+<li>Delivery: Docker (pinned base images), CI workflow with a dependency vulnerability check.</li>
+</ul>
+</section>
+<section class="part"><h2>Human in the loop in this project</h2>
+<p class="loop-note">Evidence paths below refer to private repositories and are shown as plain text.</p>
+<ul>
+<li>Requirements from users, written and dated: <code>odd/tasks/observaciones-agudas.md</code> (13 observations, 2026-09-27) and <code>app/docs/REQUERIMIENTO_BI_GERENCIA_MEDICA.md</code> (2026-09-16).</li>
+<li>Written specifications before code: <code>openspec/changes/archive/2026-09-27-*/proposal.md</code>, <code>design.md</code>, <code>tasks.md</code>.</li>
+<li>Human decisions recorded with reasons: <code>odd/tasks/correcciones-auditoria-2026-09-29.md</code> (decision table).</li>
+<li>Independent audit with double verification of the findings that decide the verdict: <code>app/docs/AUDITORIA_[SYSTEM]_2026-09-29.md</code>.</li>
+<li>Dated decision records: <code>app/docs/adr/0001-stack-hibrido.md</code>, <code>0002-datos-costo-cero.md</code>, <code>0003-dbt-transformacion.md</code>.</li>
+<li>Every dependency logged with exact version and reason, and vulnerable versions rejected: <code>app/docs/STACK_TECNOLOGICO.md</code>, enforced by <code>app/backend/tests/test_constraints_imagen.py</code>.</li>
+<li>Integration log with a verification result per iteration: <code>app/docs/INTEGRACION_[ENGINE].md</code>.</li>
+<li>Handoffs: <code>app/docs/CONTINUIDAD.md</code>, <code>app/docs/ENTREGA_A_INFRAESTRUCTURA.md</code>.</li>
+<li>Material for presenting and defending the system: <code>app/docs/PITCH_Y_DEFENSA.md</code>.</li>
+</ul>
+</section>
+<section class="part"><h2>Status</h2>
+<p>In active use by the epidemiology unit. It currently runs against a local mirror of the warehouse view; moving the source to a dedicated analytical dataset is the next planned step and does not require new development.</p>
+</section>
+<section class="part" id="screens"><h2>Screens</h2>
+<div class="gallery">
+<figure><img src="../assets/screens/analytics-01-tablero-agudas.webp" width="1440" height="900" loading="lazy" alt="Dashboard with filters, five KPI cards, a section index, a weekly trend line chart and a bar chart of frequent diagnoses."><figcaption>Epidemiological dashboard for acute conditions with KPI cards, section index and weekly trend charts.</figcaption></figure>
+<figure><img src="../assets/screens/analytics-02-boletin.webp" width="1440" height="900" loading="lazy" alt="Weekly bulletin page with one period filter, tables per block and export buttons."><figcaption>Weekly epidemiological bulletin with one period filter driving on-screen tables and Excel, Word and PDF exports.</figcaption></figure>
+<figure><img src="../assets/screens/analytics-03-auditoria-alertas.webp" width="1440" height="900" loading="lazy" alt="Surveillance desk with alerts awaiting human review beside a provenance certificate."><figcaption>Rules-based surveillance alerts awaiting human review, beside a provenance certificate with data fingerprint and definitions version.</figcaption></figure>
+</div>
+<p class="gallery-note">Information in these screens has been anonymized.</p>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-foot"><div class="wrap">Rodolfo Vargas. Static site, no tracking.</div></footer>
+</body>
+</html>

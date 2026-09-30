@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR case management | Rodolfo Vargas</title>
+<meta name="description" content="A web system that manages the lifecycle of a medical workforce: hiring routes, training cohorts, licenses, alerts and performance evaluations.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HR case management | Rodolfo Vargas">
+<meta property="og:description" content="A web system that manages the lifecycle of a medical workforce: hiring routes, training cohorts, licenses, alerts and performance evaluations.">
+<meta property="og:image" content="../assets/screens/hr-03-periodo-evaluacion.webp">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#07111F">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap">
+<a class="brand" href="../index.html">Rodolfo Vargas</a>
+<nav aria-label="Main">
+<a href="../index.html#approach">Approach</a>
+<a href="../index.html#cases">Cases</a>
+<a href="../index.html#stack">Stack</a>
+<a href="../index.html#goals">Learning</a>
+<a href="../index.html#contact">Contact</a>
+</nav>
+<button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">Light</button>
+</div></header>
+<main id="main">
+<div class="wrap">
+<div class="case-head">
+<a class="back" href="../index.html#cases">All cases</a>
+<h1>HR case management</h1>
+<p class="lede">Web system that manages the full lifecycle of a medical workforce at a national public telemedicine service: hiring routes, onboarding and training cohorts, licenses, alerts and performance evaluations, in one place with role-based access.</p>
+<div class="facts"><ul class="figs"><li><strong>2,562</strong><span>expected evaluations, as of September 2026</span></li><li><strong>2,187</strong><span>physicians in scope</span></li><li><strong>76</strong><span>supervisors</span></li></ul><p class="muted" style="margin-top:12px;font-size:.9rem">Pilot with users. Figures as reported in 2026. <a href="#screens">See the screens</a></p></div>
+</div>
+<div class="prose">
+<section class="part"><h2>Problem</h2>
+<p>Physician management ran across spreadsheets, forms and email. Each area kept its own copy of the truth: hiring status in one place, training progress in another, licenses in a third, and evaluations in an online form plus a spreadsheet.</p>
+<p>The consequences were duplicated criteria between the form and the sheet, supervisors typing by hand whom they were evaluating, information that stayed outside any system, and no single view of what is known about a person or who is responsible for updating each piece.</p>
+</section>
+<section class="part"><h2>Solution</h2>
+<p>A modular monolith with clear boundaries between areas of responsibility (hiring lifecycle, training, licenses, access, notifications, audit, performance), so each area's rules live in one place and communicate through events.</p>
+<ul>
+<li>Hiring lifecycle: several hiring routes, each with its own steps, tracked per person with a full history.</li>
+<li>Training: cohorts with stages, attendance, activities and scores, with hand-offs between areas and a generated flow document that cannot drift from the code (the flow documentation is generated from the rule tables, and a test compares them).</li>
+<li>Licenses: requests, attachments and history.</li>
+<li>Alerts: in-app center plus email through an outbox, routed to a central mailbox and the responsible area.</li>
+<li>Performance module (latest delivery): a map of everything the system holds about a person and which area updates each attribute, applied as real permissions; configurable evaluation instruments with published versions; evaluation periods; expected evaluator derived from the existing supervision structure; capture with drafts and frozen submissions; results with visibility controlled per instrument; and import of the historical evaluation data.</li>
+<li>Sensitive identity data stored encrypted with a blind index for search; API and web served from a single origin.</li>
+</ul>
+</section>
+<section class="part"><h2>Impact</h2>
+<p>A pilot with users is running. No user or usage figure is published for this project.</p>
+<p>Scope of the last delivery, as of September 2026: the performance evaluation module is designed for a workforce of 2,187 physicians and 76 supervisors, covering 2,562 expected evaluations. A physician can hold more than one link; evaluations are per link and aggregated per person.</p>
+</section>
+<section class="part"><h2>My role</h2>
+<ul>
+<li>Requirement and domain, learned from the written procedures and from the areas that run them.</li>
+<li>Screen design.</li>
+<li>Development with AI assistance, following written proposals, task trackers and decision records.</li>
+<li>Delivery and documentation: containers, configuration, migrations and a deployment guide for the infrastructure step.</li>
+</ul>
+</section>
+<section class="part"><h2>Stack</h2>
+<p>Versions from the project's lockfile:</p>
+<ul>
+<li>API: NestJS 10.4.22, TypeScript 5.9.3, Prisma 6.19.3, PostgreSQL 16 (container image <code>postgres:16-alpine</code>); 73 database migrations.</li>
+<li>Web: React 18.3.1, React Router 7.15.1, Vite 5.4.21, Tailwind CSS 3.4.19, shadcn/ui.</li>
+<li>Tooling: pnpm workspaces (pnpm 11.4.0, Node 22 or later), Biome 1.9.x for lint and format, Vitest 2.1.9, Playwright 1.60.0, commitlint and Husky.</li>
+<li>Local infrastructure: Docker Compose with PostgreSQL and a local mail catcher; Cloud Run deployment scripted under the infrastructure folder.</li>
+</ul>
+</section>
+<section class="part"><h2>Human in the loop in this project</h2>
+<p class="loop-note">Evidence paths below refer to private repositories and are shown as plain text.</p>
+<ul>
+<li>Requirement decisions taken with the owner, dated and numbered: <code>openspec/changes/performance/proposal.md</code> (P1 to P10, 2026-09-27) and <code>docs/requerimientos/performance.md</code>.</li>
+<li>Task tracker with evidence per slice (R0 to R10) and recorded review notes, including a defect found while the whole test suite was green: <code>odd/tasks/performance.md</code>.</li>
+<li>The local gate before anything is called done (lint, typecheck, tests, build, boot check, generated-docs check), and the rule that a commit depends on the gate result: <code>docs/prompts/retomar-[project].md</code>, sections 1 to 4.</li>
+<li>Dated architecture decisions and tracked debt: <code>ARCHITECTURE-DECISIONS.md</code>, <code>TECH-DEBT.md</code>.</li>
+<li>Generated flow documentation compared with the code by a test: <code>docs/flujo-grupo-capacitaciones.md</code>.</li>
+<li>Resume document for a new person or session: <code>docs/prompts/retomar-[project].md</code>.</li>
+</ul>
+</section>
+<section class="part"><h2>Status</h2>
+<p>Pilot with users. The repository contains the deployment scripts and guide for a single-service cloud deployment; the user population and production state are not published.</p>
+</section>
+<section class="part" id="screens"><h2>Screens</h2>
+<div class="gallery">
+<figure><img src="../assets/screens/hr-01-recursos.webp" width="1440" height="900" loading="lazy" alt="Register listing physicians with onboarding route, contract status and lifecycle state."><figcaption>HR lifecycle register listing 2,187 physicians by onboarding route, contract status and lifecycle state.</figcaption></figure>
+<figure><img src="../assets/screens/hr-02-grupos.webp" width="1440" height="900" loading="lazy" alt="Board of training cohorts with stage and progress for each group."><figcaption>Training cohort board showing each group's stage (draft, training, cut, closed) and progress.</figcaption></figure>
+<figure><img src="../assets/screens/hr-03-periodo-evaluacion.webp" width="1440" height="900" loading="lazy" alt="Evaluation period page with progress bars by site and group."><figcaption>Performance evaluation period tracking 2,562 expected evaluations across 76 supervisors, with delivery progress by site and group.</figcaption></figure>
+</div>
+<p class="gallery-note">Information in these screens has been anonymized.</p>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-foot"><div class="wrap">Rodolfo Vargas. Static site, no tracking.</div></footer>
+</body>
+</html>
