@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Txoko | Basque grill in Portland, Maine</title>
+<meta name="description" content="Txoko is a Basque wood-fire grill in Portland, Maine. Pintxos, whole fish and dry-aged beef cooked over oak and apple wood. Reserve a table online.">
+<meta name="theme-color" content="#17120F">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&amp;family=Instrument+Sans:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --coal:#17120F; --coal-2:#221A15; --coal-3:#32261E;
+  --bone:#F1E8D8; --bone-dim:#BFB29C;
+  --pimiento:#D2402A; --saffron:#E5A83A;
+  --display:"Young Serif",Georgia,serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:72px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--coal);color:var(--bone);font:400 1.0625rem/1.6 var(--sans);overflow-x:clip;overflow-wrap:break-word}
+img,svg{max-width:100%}
+a{color:var(--saffron);text-underline-offset:.2em}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.02}
+p{margin:0 0 1em}
+.wrap{width:min(100% - 32px,1160px);margin-inline:auto}
+.skip{position:absolute;left:12px;top:-60px;background:var(--bone);color:var(--coal);padding:8px 12px;z-index:60}
+.skip:focus{top:8px}
+
+.ribbon{background:var(--bone);color:var(--coal);font-size:.8rem;text-align:center;padding:5px 12px}
+.ribbon a{color:var(--coal);font-weight:600}
+
+header.top{position:sticky;top:0;z-index:40;background:rgba(23,18,15,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--coal-3)}
+header.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.mark{font-family:var(--display);font-size:1.7rem;color:var(--bone);text-decoration:none;margin-right:auto;line-height:1}
+header.top nav{display:flex;gap:22px}
+header.top nav a{color:var(--bone);text-decoration:none;font-size:.95rem;padding-block:8px}
+header.top nav a:hover{text-decoration:underline;text-underline-offset:.35em;text-decoration-color:var(--pimiento);text-decoration-thickness:2px}
+.btn{display:inline-block;font:600 1rem var(--sans);background:var(--pimiento);color:#fff;border:2px solid var(--pimiento);padding:11px 22px;border-radius:999px;text-decoration:none;cursor:pointer}
+.btn:hover{background:#E04F37;border-color:#E04F37}
+.btn.ghost{background:transparent;color:var(--bone);border-color:var(--bone-dim)}
+.btn.ghost:hover{border-color:var(--bone);background:transparent}
+header.top .btn{padding:8px 18px;font-size:.92rem}
+@media (max-width:760px){header.top nav{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(40px,8vw,96px) 0 clamp(48px,8vw,104px)}
+.hero .wrap{display:grid;gap:32px 48px;grid-template-columns:minmax(0,1fr);align-items:center}
+@media (min-width:900px){.hero .wrap{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.hero h1{font-size:clamp(4.4rem,15vw,11rem);letter-spacing:-.03em;line-height:.9}
+.hero .sub{font-family:var(--display);font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.15;margin:22px 0 14px;max-width:20ch}
+.hero p.lead{color:var(--bone-dim);max-width:44ch}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.fire{width:100%;max-width:440px;justify-self:center;display:block}
+.fire .grate line{stroke:var(--coal-3);stroke-width:5;stroke-linecap:round}
+.fire .flame{transform-box:fill-box;transform-origin:50% 100%}
+@media (prefers-reduced-motion:no-preference){
+  .fire .f1{animation:sway 3.4s ease-in-out infinite}
+  .fire .f2{animation:sway 2.6s ease-in-out infinite reverse}
+  .fire .f3{animation:sway 3s ease-in-out infinite .4s}
+}
+@keyframes sway{0%,100%{transform:scaleY(1) skewX(0)}50%{transform:scaleY(1.07) skewX(2.5deg)}}
+
+section{padding-block:clamp(64px,10vw,128px) 0}
+h2{font-size:clamp(2.2rem,5.6vw,4.2rem);letter-spacing:-.02em;margin-bottom:28px}
+
+/* story */
+.story .wrap{display:grid;gap:28px 64px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.story .wrap{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.story p{max-width:58ch}
+.story .big{font-family:var(--display);font-size:clamp(1.5rem,2.8vw,2.1rem);line-height:1.25;color:var(--bone)}
+.story .small p{color:var(--bone-dim)}
+.sig{color:var(--saffron);font-family:var(--display)}
+
+/* menu */
+.menu{background:var(--bone);color:var(--coal);margin-top:clamp(64px,10vw,128px);padding-bottom:clamp(64px,10vw,120px)}
+.menu h2{color:var(--coal)}
+.menu .intro{max-width:52ch;color:#4a3f33}
+.menu-grid{display:grid;gap:40px 72px;grid-template-columns:minmax(0,1fr);margin-top:40px}
+@media (min-width:900px){.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.menu h3{font-size:1.9rem;margin-bottom:14px;padding-bottom:10px;border-bottom:3px solid var(--pimiento)}
+.dish{margin:0 0 18px}
+.dish .row{display:flex;align-items:baseline;gap:10px}
+.dish .name{font-weight:600}
+.dish .dots{flex:1;border-bottom:2px dotted #a79a85;transform:translateY(-4px);min-width:16px}
+.dish .price{font-variant-numeric:tabular-nums;font-weight:600}
+.dish p{margin:2px 0 0;color:#5b4f41;font-size:.96rem;max-width:46ch}
+.note{margin-top:36px;font-size:.92rem;color:#5b4f41;max-width:70ch}
+
+/* reserve */
+.reserve .wrap{display:grid;gap:36px 64px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.reserve .wrap{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+.reserve .aside p{color:var(--bone-dim);max-width:40ch}
+form.res{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--coal-2);padding:clamp(20px,4vw,36px);border-radius:14px;border:1px solid var(--coal-3)}
+form.res .full{grid-column:1/-1}
+@media (max-width:560px){form.res{grid-template-columns:minmax(0,1fr)}}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;color:var(--bone);background:var(--coal);border:1.5px solid #5a4a3d;border-radius:8px;padding:11px 12px;min-height:46px}
+textarea{min-height:90px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--saffron);outline-offset:2px;border-color:var(--saffron)}
+input::placeholder,textarea::placeholder{color:#8d7f6b}
+.hint{font-size:.85rem;color:var(--bone-dim);margin:6px 0 0}
+.err-msg{color:#ff9f8f;font-size:.88rem;margin:6px 0 0;min-height:0}
+.confirm{display:none;background:var(--coal-2);border:2px solid var(--saffron);border-radius:14px;padding:clamp(22px,4vw,40px)}
+.confirm.show{display:block}
+.confirm h3{font-size:2rem;margin-bottom:12px}
+.confirm dl{margin:18px 0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px}
+.confirm dt{color:var(--bone-dim)}
+.confirm dd{margin:0;font-weight:600}
+.confirm .fine{font-size:.88rem;color:var(--bone-dim)}
+
+/* visit */
+.visit .wrap{display:grid;gap:36px 64px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.visit .wrap{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
+.hours{margin:0 0 24px;display:grid;grid-template-columns:auto 1fr;gap:8px 28px;max-width:420px}
+.hours dt{font-weight:600}
+.hours dd{margin:0;color:var(--bone-dim);font-variant-numeric:tabular-nums}
+address{font-style:normal;margin-bottom:18px}
+.map{width:100%;height:auto;border-radius:14px;border:1px solid var(--coal-3);display:block;background:var(--coal-2)}
+
+/* reviews */
+.reviews .grid{display:grid;gap:36px;grid-template-columns:minmax(0,1fr);align-items:start}
+@media (min-width:900px){.reviews .grid{grid-template-columns:repeat(3,minmax(0,1fr))}.reviews .grid figure:nth-child(2){margin-top:56px}}
+.reviews figure{margin:0;border-left:4px solid var(--pimiento);padding-left:20px}
+.reviews blockquote{margin:0 0 12px;font-family:var(--display);font-size:1.35rem;line-height:1.3}
+.reviews figcaption{color:var(--bone-dim);font-size:.92rem}
+.reviews .fine{margin-top:36px;font-size:.88rem;color:var(--bone-dim)}
+
+footer.foot{margin-top:clamp(72px,10vw,128px);border-top:1px solid var(--coal-3);padding-block:32px 40px;color:var(--bone-dim);font-size:.92rem}
+footer.foot .wrap{display:grid;gap:14px 40px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){footer.foot .wrap{grid-template-columns:1fr auto}}
+footer.foot a{color:var(--bone)}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="ribbon">Concept site by Rodolfo Vargas. Fictional business. <a href="../../index.html">Back to portfolio</a></div>
+<header class="top"><div class="wrap">
+<a class="mark" href="#top" aria-label="Txoko, home">Txoko</a>
+<nav aria-label="Main"><a href="#story">Our fire</a><a href="#menu">Menu</a><a href="#visit">Hours</a><a href="#reviews">Reviews</a></nav>
+<a class="btn" href="#reserve">Reserve a table</a>
+</div></header>
+<main id="main">
+
+<section class="hero" id="top" style="padding-top:clamp(40px,8vw,96px)"><div class="wrap">
+<div>
+<h1>Txoko</h1>
+<p class="sub">Basque cooking over live oak and apple wood.</p>
+<p class="lead">Pintxos at the counter, whole fish and dry-aged beef from the grill, cider poured from a height. Dinner Tuesday through Sunday on Cooper Street in Portland.</p>
+<div class="cta"><a class="btn" href="#reserve">Reserve a table</a><a class="btn ghost" href="#menu">Read the menu</a></div>
+</div>
+<svg class="fire" viewBox="0 0 440 440" role="img" aria-label="Illustration of three flames rising above an iron grill grate">
+<g class="grate"><line x1="30" y1="372" x2="410" y2="372"/><line x1="30" y1="394" x2="410" y2="394"/><line x1="30" y1="416" x2="410" y2="416"/></g>
+<path class="flame f1" fill="#D2402A" d="M220 36c16 58 82 88 82 170 0 66-38 110-82 110s-82-44-82-110c0-46 26-66 40-98 8 22 20 34 28 40-6-46 2-80 14-112z"/>
+<path class="flame f2" fill="#E5A83A" d="M220 124c10 40 54 62 54 118 0 46-24 74-54 74s-54-28-54-74c0-32 16-46 26-68 6 14 14 22 20 26-4-30 0-52 8-76z"/>
+<path class="flame f3" fill="#F1E8D8" d="M220 212c6 22 28 36 28 66 0 26-12 38-28 38s-28-12-28-38c0-18 8-26 14-38 4 8 8 12 12 14-2-16 0-28 2-42z"/>
+<rect x="30" y="356" width="380" height="10" rx="5" fill="#32261E"/>
+</svg>
+</div></section>
+
+<section class="story" id="story"><div class="wrap">
+<div>
+<h2>A cook's corner, not a fancy room.</h2>
+<p class="big">In the Basque Country a txoko is the back room where friends cook for each other. We built ours around one iron grill and a few rules.</p>
+</div>
+<div class="small">
+<p>Chef Iker Aldama grew up in a fishing town near San Sebastian and spent eleven years cooking in Boston before opening Txoko in 2021. The grill burns oak and apple wood only, split by a farm in Gorham, and it is lit at 3 p.m. every day.</p>
+<p>We buy fish off the Portland docks the morning we cook it, bake our bread twice a day, and keep the wine list short and Spanish. If something is not good that week, it is not on the menu.</p>
+<p class="sig">Iker and the Txoko crew</p>
+</div>
+</div></section>
+
+<section class="menu" id="menu"><div class="wrap">
+<h2>Tonight's menu</h2>
+<p class="intro">Order a few pintxos at the counter, share something from the grill, finish with cheesecake. The menu changes with the season, and prices include nothing but the food.</p>
+<div class="menu-grid">
+<div>
+<h3>Pintxos and small plates</h3>
+<div class="dish"><div class="row"><span class="name">Gilda skewer</span><span class="dots" aria-hidden="true"></span><span class="price">$5</span></div><p>Anchovy, guindilla pepper and manzanilla olive. Order by the piece.</p></div>
+<div class="dish"><div class="row"><span class="name">Salt cod croquetas</span><span class="dots" aria-hidden="true"></span><span class="price">$11</span></div><p>Six crisp croquetas with garlic aioli.</p></div>
+<div class="dish"><div class="row"><span class="name">Tomato bread, Maine sea salt</span><span class="dots" aria-hidden="true"></span><span class="price">$9</span></div><p>Grilled sourdough rubbed with ripe tomato and olive oil.</p></div>
+<div class="dish"><div class="row"><span class="name">Grilled octopus</span><span class="dots" aria-hidden="true"></span><span class="price">$19</span></div><p>Smoked paprika potatoes, parsley oil.</p></div>
+<div class="dish"><div class="row"><span class="name">Piquillo peppers, goat cheese</span><span class="dots" aria-hidden="true"></span><span class="price">$14</span></div><p>Roasted over embers, stuffed and finished with sherry vinegar.</p></div>
+</div>
+<div>
+<h3>From the grill</h3>
+<div class="dish"><div class="row"><span class="name">Txuleta, dry-aged ribeye for two</span><span class="dots" aria-hidden="true"></span><span class="price">$98</span></div><p>Thirty-six ounces, aged 45 days, sliced at the table with flaky salt.</p></div>
+<div class="dish"><div class="row"><span class="name">Whole branzino</span><span class="dots" aria-hidden="true"></span><span class="price">$38</span></div><p>Lemon, salsa verde, grilled escarole.</p></div>
+<div class="dish"><div class="row"><span class="name">Lamb chops</span><span class="dots" aria-hidden="true"></span><span class="price">$42</span></div><p>Three chops, piquillo sauce, sherry-glazed onions.</p></div>
+<div class="dish"><div class="row"><span class="name">Wood-roasted mushrooms</span><span class="dots" aria-hidden="true"></span><span class="price">$22</span></div><p>Oyster and maitake, egg yolk, toasted hazelnuts.</p></div>
+</div>
+<div>
+<h3>Sweets</h3>
+<div class="dish"><div class="row"><span class="name">Burnt Basque cheesecake</span><span class="dots" aria-hidden="true"></span><span class="price">$10</span></div><p>Caramelized top, custard center, baked in a very hot oven.</p></div>
+<div class="dish"><div class="row"><span class="name">Sheep's milk yogurt, honey</span><span class="dots" aria-hidden="true"></span><span class="price">$9</span></div><p>Walnuts and local honeycomb.</p></div>
+</div>
+<div>
+<h3>To drink</h3>
+<div class="dish"><div class="row"><span class="name">Txakoli, glass</span><span class="dots" aria-hidden="true"></span><span class="price">$13</span></div><p>Lightly sparkling white, poured from above the shoulder.</p></div>
+<div class="dish"><div class="row"><span class="name">Basque cider, pour</span><span class="dots" aria-hidden="true"></span><span class="price">$12</span></div><p>Dry, funky and unfiltered.</p></div>
+<div class="dish"><div class="row"><span class="name">Rioja, by the glass</span><span class="dots" aria-hidden="true"></span><span class="price">$15</span></div><p>Ask for today's bottle.</p></div>
+</div>
+</div>
+<p class="note">Please tell your server about allergies. We cook with nuts, shellfish and gluten in a shared kitchen. Parties of six or more add 20 percent gratuity.</p>
+</div></section>
+
+<section class="reserve" id="reserve"><div class="wrap">
+<div class="aside">
+<h2>Reserve a table</h2>
+<p>Tables are held for 15 minutes. The counter seats eight and is always walk-in.</p>
+<p>For parties of nine or more, call (207) 555-0148.</p>
+</div>
+<div>
+<form class="res" id="res-form" novalidate>
+<div class="full"><label for="r-name">Name</label><input id="r-name" name="name" autocomplete="name" required><p class="err-msg" id="e-name"></p></div>
+<div><label for="r-email">Email</label><input id="r-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"><p class="err-msg" id="e-email"></p></div>
+<div><label for="r-phone">Phone</label><input id="r-phone" name="phone" type="tel" autocomplete="tel" placeholder="(207) 555-0100"></div>
+<div><label for="r-date">Date</label><input id="r-date" name="date" type="date" required><p class="err-msg" id="e-date"></p></div>
+<div><label for="r-time">Time</label><select id="r-time" name="time"><option>5:00 pm</option><option>5:30 pm</option><option>6:00 pm</option><option selected>6:30 pm</option><option>7:00 pm</option><option>7:30 pm</option><option>8:00 pm</option><option>8:30 pm</option></select></div>
+<div><label for="r-party">Party size</label><select id="r-party" name="party"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+<div class="full"><label for="r-note">Anything we should know</label><textarea id="r-note" name="note" placeholder="Allergies, a birthday, a high chair"></textarea></div>
+<div class="full"><button class="btn" type="submit">Request this table</button><p class="hint">Demo form. Nothing is sent or saved.</p></div>
+</form>
+<div class="confirm" id="res-ok" role="status" tabindex="-1">
+<h3>Table requested</h3>
+<p>Thanks, <span id="c-name"></span>. Here is what we would hold for you.</p>
+<dl><dt>When</dt><dd id="c-when"></dd><dt>Party</dt><dd id="c-party"></dd><dt>Confirmation to</dt><dd id="c-email"></dd></dl>
+<p class="fine">This is a concept site. No reservation was made and no email was sent.</p>
+<button class="btn ghost" type="button" id="res-again">Make another request</button>
+</div>
+</div>
+</div></section>
+
+<section class="visit" id="visit"><div class="wrap">
+<div>
+<h2>Hours and location</h2>
+<dl class="hours">
+<dt>Tuesday to Thursday</dt><dd>5:00 to 9:30 pm</dd>
+<dt>Friday, Saturday</dt><dd>5:00 to 10:30 pm</dd>
+<dt>Sunday</dt><dd>4:00 to 9:00 pm</dd>
+<dt>Monday</dt><dd>Closed</dd>
+</dl>
+<address>Txoko<br>218 Cooper Street<br>Portland, ME 04101<br><a href="tel:+12075550148">(207) 555-0148</a><br><a href="mailto:hello@example.com">hello@example.com</a></address>
+<p class="hint" style="color:var(--bone-dim)">Street parking on Cooper and Hale. The Hale Street garage is a two-minute walk.</p>
+</div>
+<svg class="map" viewBox="0 0 640 440" role="img" aria-label="Simplified map showing Txoko at the corner of Cooper Street and Hale Street, one block from the harbor, with a parking garage nearby.">
+<rect width="640" height="440" fill="#221A15"/>
+<path d="M0 330 C120 300 220 360 340 336 S560 300 640 330 V440 H0z" fill="#2C3A44"/>
+<text x="470" y="400" font-family="Instrument Sans,sans-serif" font-size="14" fill="#8fa3b0">Casco Bay</text>
+<g fill="#32261E"><rect x="30" y="30" width="170" height="110" rx="6"/><rect x="230" y="30" width="170" height="110" rx="6"/><rect x="430" y="30" width="180" height="110" rx="6"/><rect x="30" y="180" width="170" height="100" rx="6"/><rect x="430" y="180" width="180" height="100" rx="6"/></g>
+<rect x="230" y="180" width="170" height="100" rx="6" fill="#3d2f25"/>
+<g fill="#4a3a2d"><rect x="30" y="152" width="580" height="16" rx="2"/><rect x="30" y="292" width="580" height="16" rx="2" opacity=".0"/></g>
+<rect x="212" y="20" width="6" height="300" fill="#4a3a2d"/><rect x="412" y="20" width="6" height="300" fill="#4a3a2d"/>
+<rect x="30" y="152" width="580" height="16" fill="#4a3a2d"/>
+<g font-family="Instrument Sans,sans-serif" font-size="13" fill="#BFB29C"><text x="290" y="164">Cooper Street</text><text transform="translate(213,100) rotate(-90)" text-anchor="middle" x="0" y="-8">Hale Street</text><text transform="translate(413,100) rotate(-90)" text-anchor="middle" x="0" y="-8">Pearl Street</text></g>
+<g font-family="Instrument Sans,sans-serif" font-size="13" fill="#F1E8D8"><text x="46" y="222">Hale Street garage</text><text x="440" y="222">Fish pier</text></g>
+<rect x="46" y="236" width="26" height="26" rx="5" fill="#E5A83A"/><text x="59" y="255" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-weight="700" font-size="17" fill="#17120F">P</text>
+<g transform="translate(300,96)"><path d="M0 -52c-18 0-32 14-32 32 0 24 32 56 32 56s32-32 32-56c0-18-14-32-32-32z" fill="#D2402A"/><circle cy="-20" r="11" fill="#F1E8D8"/></g>
+<text x="300" y="118" text-anchor="middle" font-family="Young Serif,serif" font-size="22" fill="#F1E8D8">Txoko</text>
+</svg>
+</div></section>
+
+<section class="reviews" id="reviews"><div class="wrap">
+<h2>What the room says</h2>
+<div class="grid">
+<figure><blockquote>The octopus alone is worth the drive. We came for one plate and stayed for four.</blockquote><figcaption>Dana R., Saturday dinner</figcaption></figure>
+<figure><blockquote>Loud in the good way. The txuleta arrived sizzling and the cider pour made the whole table laugh.</blockquote><figcaption>Marcus T., birthday for six</figcaption></figure>
+<figure><blockquote>Honest food, kind staff and a counter seat with a view of the fire. I am already planning the next visit.</blockquote><figcaption>Priya N., Tuesday regular</figcaption></figure>
+</div>
+<p class="fine">Reviewer names and quotes on this concept site are invented.</p>
+</div></section>
+
+</main>
+<footer class="foot"><div class="wrap">
+<div>Txoko, 218 Cooper Street, Portland, ME 04101. <a href="tel:+12075550148">(207) 555-0148</a></div>
+<div>Concept site by Rodolfo Vargas. Fictional business. <a href="../../index.html">Back to portfolio</a></div>
+</div></footer>
+<script>
+(function(){
+  var form=document.getElementById('res-form'),ok=document.getElementById('res-ok');
+  var d=document.getElementById('r-date');
+  var t=new Date(); t.setMinutes(t.getMinutes()-t.getTimezoneOffset());
+  d.min=t.toISOString().slice(0,10);
+  function set(id,msg){document.getElementById(id).textContent=msg}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=form.name.value.trim(),em=form.email.value.trim(),dt=form.date.value,good=true;
+    set('e-name',n?'':'Enter a name for the reservation.');
+    set('e-email',/^\S+@\S+\.\S+$/.test(em)?'':'Enter an email address, like you@example.com.');
+    set('e-date',dt?'':'Choose a date.');
+    if(!n||!/^\S+@\S+\.\S+$/.test(em)||!dt){form.querySelector('.err-msg:not(:empty)').previousElementSibling.focus();return;}
+    var parts=dt.split('-'),dd=new Date(+parts[0],+parts[1]-1,+parts[2]);
+    document.getElementById('c-name').textContent=n;
+    document.getElementById('c-when').textContent=dd.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})+' at '+form.time.value;
+    document.getElementById('c-party').textContent=form.party.value+(form.party.value==='1'?' guest':' guests');
+    document.getElementById('c-email').textContent=em;
+    form.style.display='none';ok.classList.add('show');ok.focus();
+  });
+  document.getElementById('res-again').addEventListener('click',function(){
+    form.reset();['e-name','e-email','e-date'].forEach(function(i){set(i,'')});
+    ok.classList.remove('show');form.style.display='';form.name.focus();
+  });
+})();
+</script>
+</body>
+</html>

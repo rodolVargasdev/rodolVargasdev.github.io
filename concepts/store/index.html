@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quarter Mile Coffee | Small-batch roasters in Minneapolis</title>
+<meta name="description" content="Quarter Mile Coffee roasts small batches every Thursday in Minneapolis and ships them fresh. Shop whole bean coffee, brewing gear and gifts. Demo store, nothing is sold.">
+<meta name="theme-color" content="#2330D0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Newsreader:ital,wght@1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#F0ECE3; --ink:#14130F; --cobalt:#2330D0; --tang:#FF6B2C; --pink:#F5B7C9; --pine:#1E5B3A; --sand:#E2D9C6;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; --serif:"Newsreader",Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bone);color:var(--ink);font:400 1rem/1.55 var(--sans);overflow-x:clip;overflow-wrap:break-word}
+img,svg{max-width:100%}
+a{color:var(--cobalt);text-underline-offset:.2em}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--tang);outline-offset:3px;border-radius:2px}
+.on-cobalt :focus-visible,.hero :focus-visible{outline-color:#fff}
+h1,h2,h3{font-weight:800;margin:0;line-height:1}
+p{margin:0 0 1em}
+.wrap{width:min(100% - 32px,1200px);margin-inline:auto}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:8px 12px;z-index:90}
+.skip:focus{top:8px}
+.ribbon{background:var(--ink);color:#d9d3c5;font-size:.78rem;text-align:center;padding:5px 12px}
+.ribbon a{color:#fff;font-weight:600}
+
+header.top{position:sticky;top:0;z-index:50;background:var(--bone);border-bottom:2px solid var(--ink)}
+header.top .wrap{display:flex;align-items:center;gap:20px;height:62px}
+.logo{font-stretch:62%;font-weight:900;font-size:1.9rem;letter-spacing:-.01em;color:var(--ink);text-decoration:none;margin-right:auto;line-height:1;white-space:nowrap}
+header.top nav{display:flex;gap:24px}
+header.top nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;padding-block:8px}
+header.top nav a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.35em}
+.cart-btn{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--bone);border:2px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:700;cursor:pointer;min-height:44px}
+.cart-btn:hover{background:var(--tang);border-color:var(--tang);color:var(--ink)}
+.cart-btn .n{background:var(--bone);color:var(--ink);min-width:24px;height:24px;border-radius:999px;display:grid;place-items:center;font-size:.85rem;padding-inline:6px}
+@media (max-width:760px){header.top nav{display:none}}
+
+/* hero */
+.hero{background:var(--cobalt);color:var(--bone);overflow:hidden}
+.hero .wrap{display:grid;gap:12px 20px;grid-template-columns:minmax(0,1fr);padding-block:clamp(36px,6vw,72px) clamp(32px,5vw,56px);align-items:end}
+@media (min-width:960px){.hero .wrap{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.hero h1{grid-column:1/-1;font-stretch:62%;font-weight:900;font-size:min(12.2vw,9.2rem);line-height:.86;letter-spacing:-.01em;margin-bottom:12px}
+.hero h1 span{display:block}
+.hero .lead{font-size:1.2rem;max-width:40ch;margin:0 0 22px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;font-weight:800;font-size:1rem;background:var(--tang);color:var(--ink);border:2px solid var(--ink);padding:13px 26px;border-radius:999px;text-decoration:none;cursor:pointer;text-align:center}
+.btn:hover{background:var(--bone)}
+.btn.dark{background:var(--ink);color:var(--bone)}
+.btn.dark:hover{background:var(--tang);color:var(--ink)}
+.hero .btn.ln{background:transparent;color:var(--bone);border-color:var(--bone)}
+.hero .btn.ln:hover{background:var(--bone);color:var(--ink)}
+.stack{position:relative;height:clamp(240px,34vw,420px)}
+.stack svg{position:absolute;height:100%;width:auto;bottom:-8px}
+.stack .b1{left:2%;transform:rotate(-7deg) scale(.86);transform-origin:bottom}
+.stack .b2{left:28%;z-index:2}
+.stack .b3{left:55%;transform:rotate(6deg) scale(.9);transform-origin:bottom}
+@media (min-width:960px){.stack{height:min(420px,36vw)}}
+@media (prefers-reduced-motion:no-preference){.stack .b1,.stack .b3,.stack .b2{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}.stack .b2{animation-delay:.1s}.stack .b3{animation-delay:.2s}}
+@keyframes rise{from{translate:0 40px;opacity:0}to{translate:0 0;opacity:1}}
+
+/* shop */
+.shop{padding-block:clamp(48px,7vw,96px) 0}
+.shop-head{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:end;justify-content:space-between;margin-bottom:28px}
+h2{font-stretch:62%;font-weight:900;font-size:clamp(2.6rem,7vw,5.2rem);letter-spacing:-.005em}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{background:transparent;border:2px solid var(--ink);border-radius:999px;padding:8px 18px;font-weight:700;cursor:pointer;min-height:44px}
+.filters button:hover{background:var(--sand)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bone)}
+.count{font-size:.92rem;color:#4a463c;margin:0 0 20px}
+.grid{display:grid;gap:36px 24px;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;margin:0;padding:0}
+@media (min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:420px){.grid{grid-template-columns:minmax(0,1fr)}}
+.card .tile{display:block;width:100%;aspect-ratio:1/1.08;border:0;padding:0;cursor:pointer;position:relative;overflow:hidden;background:var(--c)}
+.card .tile svg{width:100%;height:100%;display:block;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.card .tile:hover svg{transform:scale(1.05) rotate(-1.5deg)}
+.card .tile .qv{position:absolute;left:10px;bottom:10px;background:var(--bone);color:var(--ink);font-weight:700;font-size:.82rem;padding:6px 12px;border-radius:999px;opacity:0;transform:translateY(6px);transition:.2s}
+.card .tile:hover .qv,.card .tile:focus-visible .qv{opacity:1;transform:none}
+@media (hover:none){.card .tile .qv{opacity:1;transform:none}}
+.card h3{font-size:1.2rem;font-weight:800;margin:12px 0 2px;letter-spacing:-.01em}
+.card .notes{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:#4a463c;margin:0 0 8px}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card .price{font-weight:800;font-variant-numeric:tabular-nums}
+.add{background:var(--ink);color:var(--bone);border:2px solid var(--ink);border-radius:999px;padding:7px 16px;font-weight:700;cursor:pointer;min-height:40px}
+.add:hover{background:var(--tang);color:var(--ink)}
+.add.done{background:var(--pine);border-color:var(--pine);color:#fff}
+
+/* dialog */
+dialog.qv-dialog{border:2px solid var(--ink);padding:0;max-width:min(860px,calc(100% - 24px));width:100%;background:var(--bone);color:var(--ink);max-height:calc(100dvh - 24px);overflow:auto}
+dialog::backdrop{background:rgba(20,19,15,.62)}
+.qv-body{display:grid;grid-template-columns:minmax(0,1fr)}
+@media (min-width:720px){.qv-body{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}}
+.qv-art{background:var(--c);aspect-ratio:1/1}
+.qv-art svg{width:100%;height:100%;display:block}
+.qv-info{padding:clamp(20px,4vw,36px);position:relative}
+.qv-info h2{font-size:clamp(2.2rem,5vw,3.2rem);padding-right:48px}
+.qv-info .notes{font-family:var(--serif);font-style:italic;font-size:1.25rem;margin:8px 0 14px}
+.qv-info .price{font-size:1.5rem;font-weight:800;margin:14px 0}
+.qv-info dl{margin:14px 0;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:.95rem}
+.qv-info dt{font-weight:700}.qv-info dd{margin:0}
+.x{position:absolute;right:14px;top:14px;width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:var(--bone);cursor:pointer;display:grid;place-items:center}
+.x:hover{background:var(--tang)}
+.x svg{width:16px;height:16px}
+.opts{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:16px 0}
+.opts label{display:block;font-weight:700;font-size:.85rem;margin-bottom:4px}
+select{font:inherit;border:2px solid var(--ink);background:var(--bone);padding:9px 10px;min-height:44px;border-radius:8px}
+.qty{display:inline-flex;align-items:center;border:2px solid var(--ink);border-radius:999px}
+.qty button{width:40px;height:40px;border:0;background:transparent;font-size:1.2rem;font-weight:700;cursor:pointer;border-radius:50%}
+.qty button:hover{background:var(--sand)}
+.qty output{min-width:28px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(20,19,15,.55);opacity:0;pointer-events:none;transition:opacity .25s;z-index:70}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bone);border-left:2px solid var(--ink);z-index:80;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .3s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:2px solid var(--ink)}
+.drawer header h2{font-size:2rem}
+.ship{padding:14px 20px;border-bottom:1px solid var(--sand);font-size:.92rem}
+.bar{height:8px;background:var(--sand);border-radius:99px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pine);width:0;transition:width .3s}
+.lines{list-style:none;margin:0;padding:8px 20px;overflow:auto;flex:1}
+.line{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:6px 14px;padding:14px 0;border-bottom:1px solid var(--sand);align-items:start}
+.line .th{width:72px;height:72px;background:var(--c);overflow:hidden}
+.line .th svg{width:100%;height:100%;display:block}
+.line h3{font-size:1rem}
+.line .var{font-size:.85rem;color:#4a463c}
+.line .amt{font-weight:800;font-variant-numeric:tabular-nums}
+.line .ctl{grid-column:2/-1;display:flex;align-items:center;gap:14px}
+.rm{background:none;border:0;padding:8px 4px;text-decoration:underline;cursor:pointer;font-size:.88rem;min-height:40px}
+.rm:hover{color:var(--cobalt)}
+.empty{padding:36px 20px;text-align:center}
+.empty p{color:#4a463c}
+.foot-cart{padding:16px 20px 20px;border-top:2px solid var(--ink);background:var(--sand)}
+.sub{display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;margin-bottom:6px}
+.foot-cart small{display:block;margin-bottom:12px;color:#4a463c}
+.foot-cart .btn{width:100%}
+.demo-note{display:none;margin-top:12px;background:var(--bone);border:2px solid var(--ink);padding:12px 14px;font-size:.92rem}
+.demo-note.show{display:block}
+
+/* info */
+.info{padding-block:clamp(64px,9vw,120px) 0}
+.info .wrap{display:grid;gap:40px 72px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.info .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.info h2{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:20px}
+.info dl{margin:0}
+.info dl div{border-top:2px solid var(--ink);padding:14px 0 16px}
+.info dt{font-weight:800;font-size:1.2rem;margin-bottom:4px}
+.info dd{margin:0;max-width:52ch}
+.news{background:var(--tang);margin-top:clamp(64px,9vw,120px);border-block:2px solid var(--ink)}
+.news .wrap{display:grid;gap:20px 56px;grid-template-columns:minmax(0,1fr);padding-block:clamp(36px,6vw,64px);align-items:center}
+@media (min-width:900px){.news .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.news h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.news p{max-width:44ch;margin:12px 0 0}
+.news form{display:flex;flex-wrap:wrap;gap:10px}
+.news label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.news input{flex:1 1 220px;font:inherit;border:2px solid var(--ink);background:var(--bone);padding:12px 16px;min-height:50px;border-radius:999px}
+.news input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.news .msg{flex-basis:100%;margin:6px 0 0;font-weight:700;min-height:1.5em}
+footer.foot{background:var(--ink);color:#cfc9bb;padding-block:36px 44px;font-size:.92rem}
+footer.foot .wrap{display:grid;gap:14px 40px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){footer.foot .wrap{grid-template-columns:1fr auto}}
+footer.foot a{color:#fff}
+footer.foot .big{font-stretch:62%;font-weight:900;font-size:1.8rem;color:#fff;line-height:1;margin-bottom:6px}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#shop">Skip to the shop</a>
+<div class="ribbon">Concept site by Rodolfo Vargas. Fictional business. <a href="../../index.html">Back to portfolio</a></div>
+<header class="top"><div class="wrap">
+<a class="logo" href="#top" aria-label="Quarter Mile Coffee, home">Quarter Mile Coffee</a>
+<nav aria-label="Main"><a href="#shop">Shop</a><a href="#shipping">Shipping and returns</a><a href="#news">Newsletter</a></nav>
+<button class="cart-btn" id="cart-open" type="button" aria-haspopup="dialog" aria-label="Open cart, 0 items"><span>Cart</span><span class="n" id="cart-n">0</span></button>
+</div></header>
+<main id="top">
+
+<section class="hero on-cobalt"><div class="wrap">
+<h1><span>Roasted Thursday.</span><span>On your porch Saturday.</span></h1>
+<div>
+<p class="lead">Small batches from a garage-sized roaster in northeast Minneapolis. We roast to order, so your coffee is never more than three days old when it arrives.</p>
+<div class="cta"><a class="btn" href="#shop">Shop coffee</a><a class="btn ln" href="#shipping">How shipping works</a></div>
+</div>
+<div class="stack" aria-hidden="true" id="hero-bags"></div>
+</div></section>
+
+<section class="shop" id="shop"><div class="wrap">
+<div class="shop-head">
+<h2>The shelf</h2>
+<div class="filters" role="group" aria-label="Filter products by category" id="filters">
+<button type="button" aria-pressed="true" data-cat="all">All</button>
+<button type="button" aria-pressed="false" data-cat="coffee">Coffee</button>
+<button type="button" aria-pressed="false" data-cat="brewing">Brewing gear</button>
+<button type="button" aria-pressed="false" data-cat="gifts">Gifts</button>
+</div>
+</div>
+<p class="count" id="count" aria-live="polite"></p>
+<ul class="grid" id="grid"></ul>
+</div></section>
+
+<section class="info" id="shipping"><div class="wrap">
+<div>
+<h2>Shipping</h2>
+<dl>
+<div><dt>Roast and ship</dt><dd>Orders placed by Wednesday at noon are roasted Thursday and shipped Friday. Later orders go out the following week.</dd></div>
+<div><dt>Free over $40</dt><dd>Orders of $40 or more ship free across the United States. Smaller orders ship for a flat $6.</dd></div>
+<div><dt>Arrives in 2 to 4 days</dt><dd>Most orders arrive Saturday or Monday. You get a tracking email when your box leaves.</dd></div>
+</dl>
+</div>
+<div>
+<h2>Returns</h2>
+<dl>
+<div><dt>Not right? Tell us.</dt><dd>If a coffee is not what you hoped for, write to us within 30 days and we will send a different bag or refund you.</dd></div>
+<div><dt>Gear returns</dt><dd>Unused brewing gear can come back within 30 days in its box. We cover return shipping if an item arrives damaged.</dd></div>
+<div><dt>Questions</dt><dd><a href="mailto:hello@example.com">hello@example.com</a> or (612) 555-0187, weekdays 9 to 4 Central.</dd></div>
+</dl>
+</div>
+</div></section>
+
+<section class="news" id="news"><div class="wrap">
+<div><h2>New roasts, first.</h2><p>One short email when a new coffee lands, roughly twice a month. Subscribers get first pick of small lots.</p></div>
+<form id="news-form" novalidate>
+<label for="news-email">Email address</label>
+<input id="news-email" type="email" autocomplete="email" placeholder="you@example.com">
+<button class="btn dark" type="submit">Subscribe</button>
+<p class="msg" id="news-msg" role="status"></p>
+</form>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+<div><div class="big">Quarter Mile Coffee</div>1840 Marshall Street NE, Minneapolis, MN 55418. Roastery open Saturdays 9 to 1.</div>
+<div>Concept site by Rodolfo Vargas. Fictional business. <a href="../../index.html">Back to portfolio</a></div>
+</div></footer>
+
+<dialog class="qv-dialog" id="qv" aria-labelledby="qv-title">
+<div class="qv-body">
+<div class="qv-art" id="qv-art"></div>
+<div class="qv-info">
+<button class="x" type="button" id="qv-close" aria-label="Close quick view"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+<h2 id="qv-title"></h2>
+<p class="notes" id="qv-notes"></p>
+<p id="qv-desc"></p>
+<dl id="qv-meta"></dl>
+<div class="opts">
+<div id="qv-grind-wrap"><label for="qv-grind">Grind</label><select id="qv-grind"><option>Whole bean</option><option>Drip</option><option>Pour-over</option><option>Espresso</option></select></div>
+<div><span class="lbl" style="display:block;font-weight:700;font-size:.85rem;margin-bottom:4px" id="qv-qty-l">Quantity</span>
+<div class="qty" role="group" aria-labelledby="qv-qty-l"><button type="button" id="qv-minus" aria-label="Decrease quantity">-</button><output id="qv-qty" aria-live="polite">1</output><button type="button" id="qv-plus" aria-label="Increase quantity">+</button></div></div>
+</div>
+<div class="price" id="qv-price"></div>
+<button class="btn dark" type="button" id="qv-add" style="width:100%">Add to cart</button>
+</div>
+</div>
+</dialog>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-t" inert>
+<header><h2 id="drawer-t">Your cart</h2><button class="x" style="position:static" type="button" id="cart-close" aria-label="Close cart"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></header>
+<div class="ship"><span id="ship-txt"></span><div class="bar" aria-hidden="true"><i id="ship-bar"></i></div></div>
+<ul class="lines" id="lines" aria-live="polite"></ul>
+<div class="foot-cart" id="cart-foot">
+<div class="sub"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+<small>Shipping and taxes are calculated at checkout.</small>
+<button class="btn dark" type="button" id="checkout">Checkout</button>
+<div class="demo-note" id="demo-note" role="status">This is a demo store. No payment is taken and no order is placed. Thanks for looking around.</div>
+</div>
+</aside>
+
+<script>
+(function(){
+  var FREE=40;
+  var P=[
+   {id:'guji',cat:'coffee',name:'Guji Natural',notes:'Blueberry, jasmine, honey',price:19,color:'#2330D0',acc:'#F5B7C9',shape:'circles',origin:'Guji, Ethiopia',roast:'Light',desc:'Sun-dried on raised beds for three weeks. Jammy and floral, and lovely as a pour-over.'},
+   {id:'huila',cat:'coffee',name:'Huila Decaf',notes:'Cocoa, red apple, caramel',price:18,color:'#1E5B3A',acc:'#E2D9C6',shape:'stripes',origin:'Huila, Colombia',roast:'Medium',desc:'Decaffeinated with sugarcane ethyl acetate, so it keeps its sweetness. Easy to drink at any hour.'},
+   {id:'house4',cat:'coffee',name:'House No. 4',notes:'Dark chocolate, toasted almond',price:16,color:'#FF6B2C',acc:'#14130F',shape:'tri',origin:'Brazil and Guatemala',roast:'Medium-dark',desc:'Our everyday coffee. Round, nutty and forgiving in a drip machine, French press or moka pot.'},
+   {id:'kenya',cat:'coffee',name:'Kenya Nyeri',notes:'Blackcurrant, grapefruit, brown sugar',price:21,color:'#F5B7C9',acc:'#2330D0',shape:'rings',origin:'Nyeri, Kenya',roast:'Light',desc:'Bright and juicy with a syrupy finish. Washed and sorted by hand at a small cooperative.'},
+   {id:'lintong',cat:'coffee',name:'Lintong Dark',notes:'Cedar, black cherry, molasses',price:17,color:'#14130F',acc:'#FF6B2C',shape:'waves',origin:'Lintong, Sumatra',roast:'Dark',desc:'A deep, earthy roast for people who like their coffee bold. Great with milk.'},
+   {id:'dripper',cat:'brewing',name:'Ceramic Dripper',notes:'Size 02, glazed in cobalt',price:34,color:'#E2D9C6',acc:'#2330D0',shape:'dripper',desc:'A cone dripper that sits on most mugs and carafes. Makes one to three cups. Dishwasher safe.'},
+   {id:'kettle',cat:'brewing',name:'Gooseneck Kettle',notes:'0.9 liter, matte black',price:68,color:'#F5B7C9',acc:'#14130F',shape:'kettle',desc:'A slim spout for slow, even pours. Stainless steel, with a heat-safe handle and a built-in lid knob.'},
+   {id:'grinder',cat:'brewing',name:'Hand Grinder',notes:'Steel burrs, 30 settings',price:89,color:'#FF6B2C',acc:'#14130F',shape:'grinder',desc:'Grinds 25 grams in about a minute. Quiet enough for an early morning, and small enough to travel.'},
+   {id:'mug',cat:'gifts',name:'Stoneware Mug',notes:'12 ounces, speckled glaze',price:22,color:'#2330D0',acc:'#F0ECE3',shape:'mug',desc:'Thrown in small runs with a wide base that does not tip. Microwave and dishwasher safe.'},
+   {id:'sampler',cat:'gifts',name:'Roaster Sampler',notes:'Four 4-ounce bags',price:32,color:'#1E5B3A',acc:'#F5B7C9',shape:'box',desc:'Guji, Kenya, House No. 4 and Huila in a gift-ready box. A good way to find your favorite.'}
+  ];
+  var byId={};P.forEach(function(p){byId[p.id]=p});
+
+  function pattern(shape,acc){
+    if(shape==='circles')return '<circle cx="100" cy="148" r="26" fill="'+acc+'"/><circle cx="70" cy="180" r="12" fill="'+acc+'"/><circle cx="132" cy="182" r="16" fill="'+acc+'"/>';
+    if(shape==='stripes')return [0,1,2,3].map(function(i){return '<rect x="52" y="'+(132+i*14)+'" width="96" height="7" fill="'+acc+'"/>'}).join('');
+    if(shape==='tri')return '<path d="M100 130l36 62H64z" fill="'+acc+'"/>';
+    if(shape==='rings')return '<circle cx="100" cy="160" r="30" fill="none" stroke="'+acc+'" stroke-width="7"/><circle cx="100" cy="160" r="12" fill="'+acc+'"/>';
+    if(shape==='waves')return [0,1,2].map(function(i){return '<path d="M52 '+(138+i*16)+'q12-12 24 0t24 0t24 0t24 0" fill="none" stroke="'+acc+'" stroke-width="5" stroke-linecap="round"/>'}).join('');
+    return '';
+  }
+  function art(p,small){
+    var t='';
+    if(['circles','stripes','tri','rings','waves'].indexOf(p.shape)>-1){
+      var ink=(p.color==='#14130F'||p.color==='#2330D0'||p.color==='#1E5B3A')?'#F0ECE3':'#14130F';
+      t='<svg viewBox="0 0 200 220" role="img" aria-label="'+p.name+' coffee bag illustration">'+
+        '<ellipse cx="100" cy="206" rx="70" ry="6" fill="#000" opacity=".12"/>'+
+        '<path d="M38 38h124l10 160q1 12-11 12H39q-12 0-11-12z" fill="'+p.color+'" stroke="#14130F" stroke-width="3"/>'+
+        '<path d="M38 38h124v22H38z" fill="#14130F" opacity=".14"/><path d="M38 60h124" stroke="#14130F" stroke-width="3"/>'+
+        '<path d="M44 38V28h112v10" fill="'+p.color+'" stroke="#14130F" stroke-width="3"/>'+
+        pattern(p.shape,p.acc)+
+        '<text x="100" y="92" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="900" font-stretch="62%" font-size="23" fill="'+ink+'">'+p.name.replace(/&/g,'&amp;')+'</text>'+
+        '<text x="100" y="112" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="600" font-size="10" fill="'+ink+'">Quarter Mile, 12 oz</text></svg>';
+      if(small){t=t.replace('Quarter Mile, 12 oz','')}
+      return t;
+    }
+    var body='';
+    var inkc='#14130F',a=p.acc;
+    if(p.shape==='dripper')body='<path d="M52 70h96l-26 70H78z" fill="'+a+'" stroke="'+inkc+'" stroke-width="3"/><rect x="44" y="62" width="112" height="12" rx="4" fill="'+a+'" stroke="'+inkc+'" stroke-width="3"/><rect x="80" y="140" width="40" height="10" fill="'+a+'" stroke="'+inkc+'" stroke-width="3"/><path d="M62 150h76v46H62z" fill="#F0ECE3" stroke="'+inkc+'" stroke-width="3"/>';
+    else if(p.shape==='kettle')body='<path d="M56 100h88l-8 90H64z" fill="#F0ECE3" stroke="'+inkc+'" stroke-width="3"/><path d="M144 112c24-2 34 8 30 30" fill="none" stroke="'+inkc+'" stroke-width="9" stroke-linecap="round"/><path d="M60 130C36 120 34 90 22 70" fill="none" stroke="'+inkc+'" stroke-width="7" stroke-linecap="round"/><path d="M56 100c0-20 88-20 88 0" fill="#F0ECE3" stroke="'+inkc+'" stroke-width="3"/><circle cx="100" cy="70" r="7" fill="'+inkc+'"/><rect x="96" y="76" width="8" height="10" fill="'+inkc+'"/>';
+    else if(p.shape==='grinder')body='<rect x="70" y="40" width="60" height="16" rx="6" fill="'+inkc+'"/><path d="M96 56v22" stroke="'+inkc+'" stroke-width="6"/><path d="M130 48h28" stroke="'+inkc+'" stroke-width="6" stroke-linecap="round"/><circle cx="162" cy="48" r="8" fill="'+inkc+'"/><path d="M66 78h68l-6 74H72z" fill="#F0ECE3" stroke="'+inkc+'" stroke-width="3"/><rect x="62" y="152" width="76" height="46" rx="6" fill="'+inkc+'"/><path d="M80 172h40" stroke="#FF6B2C" stroke-width="6" stroke-linecap="round"/>';
+    else if(p.shape==='mug')body='<path d="M54 80h86v84q0 28-28 28H82q-28 0-28-28z" fill="'+a+'" stroke="'+inkc+'" stroke-width="3"/><path d="M140 100h14q22 0 22 24t-22 24h-14" fill="none" stroke="'+inkc+'" stroke-width="9"/><g fill="'+inkc+'" opacity=".5"><circle cx="76" cy="118" r="2"/><circle cx="104" cy="144" r="2"/><circle cx="120" cy="108" r="2"/><circle cx="88" cy="168" r="2"/></g><path d="M80 40c-8 10 8 14 0 24M102 40c-8 10 8 14 0 24M124 40c-8 10 8 14 0 24" fill="none" stroke="'+inkc+'" stroke-width="3" stroke-linecap="round" opacity=".55"/>';
+    else if(p.shape==='box')body='<path d="M30 90l70-30 70 30v92l-70 30-70-30z" fill="'+a+'" stroke="'+inkc+'" stroke-width="3"/><path d="M30 90l70 30 70-30M100 120v92" fill="none" stroke="'+inkc+'" stroke-width="3"/><rect x="62" y="132" width="26" height="30" fill="#FF6B2C" stroke="'+inkc+'" stroke-width="3" transform="rotate(8 75 147)"/><rect x="112" y="150" width="26" height="30" fill="#2330D0" stroke="'+inkc+'" stroke-width="3" transform="rotate(-8 125 165)"/>';
+    return '<svg viewBox="0 0 200 220" role="img" aria-label="'+p.name+' illustration">'+body+'</svg>';
+  }
+  function tc(p){return p.cat==='coffee'?p.acc:p.color}
+  function money(n){return '$'+n.toFixed(2)}
+
+  /* hero bags */
+  var hb=document.getElementById('hero-bags');
+  hb.innerHTML=['kenya','house4','lintong'].map(function(id,i){var s=art(byId[id],true).replace('role="img" ','aria-hidden="true" ').replace(/aria-label="[^"]*"/,'');return s.replace('<svg','<svg class="b'+(i+1)+'"')}).join('');
+
+  /* grid */
+  var grid=document.getElementById('grid'),count=document.getElementById('count'),cat='all';
+  function renderGrid(){
+    var list=P.filter(function(p){return cat==='all'||p.cat===cat});
+    grid.innerHTML=list.map(function(p){
+      return '<li class="card"><button class="tile" type="button" style="--c:'+tc(p)+'" data-qv="'+p.id+'" aria-label="Quick view: '+p.name+'">'+art(p).replace(/role="img" aria-label="[^"]*"/,'aria-hidden="true"')+'<span class="qv" aria-hidden="true">Quick view</span></button>'+
+      '<h3>'+p.name+'</h3><p class="notes">'+p.notes+'</p>'+
+      '<div class="row"><span class="price">'+money(p.price)+'</span><button class="add" type="button" data-add="'+p.id+'" aria-label="Add '+p.name+' to cart">Add</button></div></li>';
+    }).join('');
+    count.textContent='Showing '+list.length+' of '+P.length+' products';
+  }
+  /* tile bg for gear uses sand etc via --c; coffee tiles use tinted version */
+  document.getElementById('filters').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    cat=b.dataset.cat;
+    this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    renderGrid();
+  });
+  renderGrid();
+
+  /* cart */
+  var cart=[];/* {key,id,grind,qty} */
+  var drawer=document.getElementById('drawer'),scrim=document.getElementById('scrim'),opener=document.getElementById('cart-open'),lastFocus=null;
+  function findLine(key){for(var i=0;i<cart.length;i++)if(cart[i].key===key)return cart[i]}
+  function addToCart(id,qty,grind){
+    var key=id+'|'+(grind||'');var l=findLine(key);
+    if(l)l.qty=Math.min(20,l.qty+qty);else cart.push({key:key,id:id,grind:grind||'',qty:qty});
+    renderCart();
+  }
+  function totals(){var n=0,s=0;cart.forEach(function(l){n+=l.qty;s+=l.qty*byId[l.id].price});return {n:n,s:s}}
+  function renderCart(){
+    var t=totals(),el=document.getElementById('lines');
+    document.getElementById('cart-n').textContent=t.n;
+    opener.setAttribute('aria-label','Open cart, '+t.n+(t.n===1?' item':' items'));
+    document.getElementById('subtotal').textContent=money(t.s);
+    var left=FREE-t.s;
+    document.getElementById('ship-txt').textContent=t.n===0?'Free shipping on orders over $'+FREE+'.':(left>0?'You are '+money(left)+' away from free shipping.':'Your order ships free.');
+    document.getElementById('ship-bar').style.width=Math.min(100,t.s/FREE*100)+'%';
+    document.getElementById('cart-foot').style.display=t.n?'':'none';
+    if(!t.n){el.innerHTML='<li class="empty"><p>Your cart is empty.</p><a class="btn" href="#shop" data-close>Browse the shelf</a></li>';document.getElementById('demo-note').classList.remove('show');return}
+    el.innerHTML=cart.map(function(l){
+      var p=byId[l.id];
+      return '<li class="line" data-key="'+l.key+'"><div class="th" style="--c:'+tc(p)+'">'+art(p,true).replace(/role="img" aria-label="[^"]*"/,'aria-hidden="true"')+'</div>'+
+      '<div><h3>'+p.name+'</h3><div class="var">'+(l.grind||p.notes)+'</div></div><div class="amt">'+money(p.price*l.qty)+'</div>'+
+      '<div class="ctl"><div class="qty" role="group" aria-label="Quantity of '+p.name+'"><button type="button" data-dec="'+l.key+'" aria-label="Decrease quantity of '+p.name+'">-</button><output>'+l.qty+'</output><button type="button" data-inc="'+l.key+'" aria-label="Increase quantity of '+p.name+'">+</button></div>'+
+      '<button class="rm" type="button" data-rm="'+l.key+'" aria-label="Remove '+p.name+' from cart">Remove</button></div></li>';
+    }).join('');
+  }
+  document.getElementById('lines').addEventListener('click',function(e){
+    var b=e.target.closest('button,a');if(!b)return;
+    if(b.hasAttribute('data-close')){closeCart();return}
+    var k=b.dataset.inc||b.dataset.dec||b.dataset.rm;if(!k)return;
+    var l=findLine(k);if(!l)return;
+    if(b.dataset.inc)l.qty=Math.min(20,l.qty+1);
+    else if(b.dataset.dec)l.qty-=1;
+    else l.qty=0;
+    if(l.qty<=0)cart.splice(cart.indexOf(l),1);
+    renderCart();
+    if(cart.length){var again=document.querySelector('#lines [data-'+(b.dataset.inc?'inc':b.dataset.dec?'dec':'rm')+'="'+k+'"]')||document.querySelector('#lines button');if(again)again.focus()}else{document.getElementById('cart-close').focus()}
+  });
+  function openCart(){lastFocus=document.activeElement;drawer.removeAttribute('inert');drawer.classList.add('on');scrim.classList.add('on');document.getElementById('cart-close').focus();document.body.style.overflow='hidden'}
+  function closeCart(){drawer.classList.remove('on');scrim.classList.remove('on');drawer.setAttribute('inert','');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  opener.addEventListener('click',openCart);
+  document.getElementById('cart-close').addEventListener('click',closeCart);
+  scrim.addEventListener('click',closeCart);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&drawer.classList.contains('on'))closeCart();
+    if(e.key==='Tab'&&drawer.classList.contains('on')){
+      var f=drawer.querySelectorAll('button:not([disabled]),a[href]');if(!f.length)return;
+      var first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+    }
+  });
+  document.getElementById('checkout').addEventListener('click',function(){document.getElementById('demo-note').classList.add('show')});
+
+  /* add buttons and quick view */
+  var qv=document.getElementById('qv'),cur=null,qty=1;
+  grid.addEventListener('click',function(e){
+    var a=e.target.closest('[data-add]');
+    if(a){
+      var p=byId[a.dataset.add];addToCart(p.id,1,p.cat==='coffee'?'Whole bean':'');
+      a.classList.add('done');a.textContent='Added';
+      setTimeout(function(){a.classList.remove('done');a.textContent='Add'},1200);return;
+    }
+    var q=e.target.closest('[data-qv]');if(q)openQV(q.dataset.qv);
+  });
+  function openQV(id){
+    var p=byId[id];cur=p;qty=1;
+    var a=document.getElementById('qv-art');a.style.setProperty('--c',tc(p));a.innerHTML=art(p);
+    document.getElementById('qv-title').textContent=p.name;
+    document.getElementById('qv-notes').textContent=p.notes;
+    document.getElementById('qv-desc').textContent=p.desc;
+    document.getElementById('qv-meta').innerHTML=p.cat==='coffee'?'<dt>Origin</dt><dd>'+p.origin+'</dd><dt>Roast</dt><dd>'+p.roast+'</dd><dt>Bag</dt><dd>12 ounces</dd>':'<dt>Ships</dt><dd>Within 2 business days</dd>';
+    document.getElementById('qv-grind-wrap').style.display=p.cat==='coffee'?'':'none';
+    document.getElementById('qv-grind').selectedIndex=0;
+    updateQV();
+    if(qv.showModal)qv.showModal();else qv.setAttribute('open','');
+  }
+  function updateQV(){document.getElementById('qv-qty').textContent=qty;document.getElementById('qv-price').textContent=money(cur.price*qty)}
+  document.getElementById('qv-minus').addEventListener('click',function(){qty=Math.max(1,qty-1);updateQV()});
+  document.getElementById('qv-plus').addEventListener('click',function(){qty=Math.min(20,qty+1);updateQV()});
+  document.getElementById('qv-close').addEventListener('click',function(){qv.close()});
+  qv.addEventListener('click',function(e){if(e.target===qv)qv.close()});
+  document.getElementById('qv-add').addEventListener('click',function(){
+    addToCart(cur.id,qty,cur.cat==='coffee'?document.getElementById('qv-grind').value:'');
+    qv.close();openCart();
+  });
+
+  /* newsletter */
+  document.getElementById('news-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=document.getElementById('news-email').value.trim(),m=document.getElementById('news-msg');
+    if(!/^\S+@\S+\.\S+$/.test(v)){m.textContent='Enter an email address, like you@example.com.';document.getElementById('news-email').focus();return}
+    m.textContent='You are on the list. This is a demo, so nothing was saved.';this.reset();
+  });
+  renderCart();
+})();
+</script>
+</body>
+</html>

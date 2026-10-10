@@ -337,3 +337,11 @@ html.anim .chapter-text { margin-top: 24px; will-change: opacity, transform; }
 .services-list { margin: 12px 0 0; padding-left: 1.25rem; color: var(--muted); font-size: 1.0625rem; max-width: 56ch; }
 .services-list li { margin-block: 6px; }
 .services-block .links { margin-top: 32px; }
+
+/* website concepts */
+.concepts { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px 28px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .concepts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.concepts .thumb img { width: 100%; border: 1px solid var(--rule); border-radius: 8px; aspect-ratio: 16 / 10; object-fit: cover; }
+.concepts h3 { margin-top: 14px; font-size: 1.5rem; letter-spacing: -0.02em; }
+.concepts .kind { color: var(--muted); margin: 2px 0 8px; font-size: 0.95rem; }
+.concepts li p:last-child { margin: 0; max-width: 40ch; }

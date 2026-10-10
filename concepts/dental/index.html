@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Larkspur Family Dental | Asheville, North Carolina</title>
+<meta name="description" content="Larkspur Family Dental in Asheville, NC. Gentle checkups, cleanings, fillings, whitening and braces for the whole family. New patients welcome. Request an appointment online.">
+<meta name="theme-color" content="#F4F8F6">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400..700&amp;family=Hanken+Grotesk:wght@400..700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F8F6; --white:#FFFFFF; --mist:#DDEBE7; --mist-2:#C9DFDA;
+  --spruce:#10393A; --spruce-2:#3D5C5B; --lagoon:#1F7A7A; --lagoon-d:#17605F; --sun:#F2C35B;
+  --serif:"Lora",Georgia,serif; --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--paper);color:var(--spruce);font:400 1.0625rem/1.65 var(--sans);overflow-x:clip;overflow-wrap:break-word}
+img,svg{max-width:100%}
+a{color:var(--lagoon-d);text-underline-offset:.2em}
+:focus-visible{outline:3px solid var(--lagoon);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.12;letter-spacing:-.01em}
+p{margin:0 0 1em}
+.wrap{width:min(100% - 32px,1120px);margin-inline:auto}
+.skip{position:absolute;left:12px;top:-60px;background:var(--spruce);color:#fff;padding:8px 12px;z-index:60}
+.skip:focus{top:8px}
+.ribbon{background:var(--spruce);color:#DDEBE7;font-size:.8rem;text-align:center;padding:5px 12px}
+.ribbon a{color:#fff;font-weight:600}
+
+header.top{position:sticky;top:0;z-index:40;background:rgba(244,248,246,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--mist-2)}
+header.top .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--spruce);text-decoration:none;margin-right:auto;white-space:nowrap}
+.logo svg{width:30px;height:30px;flex:none}
+header.top nav{display:flex;gap:22px}
+header.top nav a{color:var(--spruce);text-decoration:none;font-size:.95rem;padding-block:8px}
+header.top nav a:hover{text-decoration:underline;text-underline-offset:.35em;text-decoration-thickness:2px;text-decoration-color:var(--lagoon)}
+.btn{display:inline-block;font:600 1rem var(--sans);background:var(--lagoon-d);color:#fff;border:2px solid var(--lagoon-d);padding:12px 24px;border-radius:12px;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--spruce);border-color:var(--spruce)}
+.btn.line{background:transparent;color:var(--spruce);border-color:var(--spruce-2)}
+.btn.line:hover{background:var(--spruce);color:#fff}
+header.top .btn{padding:8px 16px;font-size:.92rem;white-space:nowrap}
+@media (max-width:820px){header.top nav{display:none}.logo span.t{font-size:.95rem}header.top .wrap{gap:10px}}
+
+/* hero */
+.hero{padding:clamp(40px,7vw,88px) 0 clamp(40px,6vw,72px)}
+.hero .wrap{display:grid;gap:40px 56px;grid-template-columns:minmax(0,1fr);align-items:center}
+@media (min-width:920px){.hero .wrap{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.05;letter-spacing:-.02em;max-width:14ch}
+.hero p.lead{font-size:1.2rem;color:var(--spruce-2);max-width:42ch;margin:20px 0 26px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .facts{margin:30px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 28px;color:var(--spruce-2);font-size:.95rem}
+.hero .facts li{padding-left:22px;position:relative}
+.hero .facts li::before{content:"";position:absolute;left:0;top:.5em;width:12px;height:7px;border-left:2.5px solid var(--lagoon);border-bottom:2.5px solid var(--lagoon);transform:rotate(-45deg)}
+.scene{position:relative;aspect-ratio:1/1;max-width:520px;width:100%;justify-self:center}
+.scene svg.bg{width:100%;height:100%;display:block}
+.next{position:absolute;left:-4%;bottom:6%;background:var(--white);border:1px solid var(--mist-2);border-radius:16px;padding:16px 18px;box-shadow:0 14px 34px -18px rgba(16,57,58,.45);max-width:min(300px,86%)}
+.next h2{font-family:var(--sans);font-size:.95rem;font-weight:700;margin:0 0 10px;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 .88rem var(--sans);background:var(--mist);color:var(--spruce);border:1.5px solid transparent;border-radius:999px;padding:8px 13px;cursor:pointer;min-height:40px}
+.chip:hover{border-color:var(--lagoon)}
+@media (max-width:560px){.next{position:static;margin-top:-30px;margin-left:8px;max-width:none}.scene{aspect-ratio:auto}.scene svg.bg{aspect-ratio:1/1}}
+@media (prefers-reduced-motion:no-preference){.sparkle{animation:tw 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.sparkle.s2{animation-delay:1.2s}@keyframes tw{0%,100%{transform:scale(.6);opacity:.5}50%{transform:scale(1.1);opacity:1}}}
+
+section{padding-block:clamp(56px,9vw,112px) 0}
+h2{font-size:clamp(1.9rem,4.4vw,3rem)}
+.sec-intro{color:var(--spruce-2);max-width:56ch;margin-top:12px}
+
+/* services */
+.svc{margin-top:36px;border-top:1.5px solid var(--spruce)}
+.svc .item{display:grid;gap:6px 28px;grid-template-columns:minmax(0,1fr);padding:22px 0;border-bottom:1px solid var(--mist-2)}
+@media (min-width:760px){.svc .item{grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr) auto;align-items:baseline}}
+.svc h3{font-size:1.4rem}
+.svc p{margin:0;color:var(--spruce-2)}
+.svc .time{font-size:.92rem;color:var(--lagoon-d);font-weight:600;white-space:nowrap}
+
+/* team */
+.team .grid{display:grid;gap:36px;grid-template-columns:minmax(0,1fr);margin-top:36px}
+@media (min-width:820px){.team .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.person svg{width:100%;max-width:220px;height:auto;display:block;margin-bottom:16px}
+.person h3{font-size:1.35rem}
+.person .role{color:var(--lagoon-d);font-weight:600;margin:2px 0 8px}
+.person p{color:var(--spruce-2);margin:0}
+
+/* two col */
+.two{display:grid;gap:44px 72px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:920px){.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.panel{background:var(--white);border:1px solid var(--mist-2);border-radius:20px;padding:clamp(24px,4vw,40px)}
+.panel h2{font-size:clamp(1.7rem,3.4vw,2.3rem);margin-bottom:12px}
+.plans{list-style:none;margin:18px 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.plans li{background:var(--mist);border-radius:10px;padding:10px 14px;font-weight:600;font-size:.95rem}
+@media (max-width:420px){.plans{grid-template-columns:1fr}}
+.steps{list-style:none;margin:20px 0 0;padding:0;counter-reset:s}
+.steps li{position:relative;padding:0 0 20px 54px;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--sun);color:var(--spruce);display:grid;place-items:center;font-weight:700}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:17px;top:40px;bottom:4px;width:2px;background:var(--mist-2)}
+.steps strong{display:block}
+.steps span{color:var(--spruce-2)}
+
+/* faq */
+.faq{margin-top:28px;border-top:1.5px solid var(--spruce);max-width:820px}
+.faq h3{font-family:var(--sans);font-size:1.1rem;font-weight:600;letter-spacing:0}
+.faq button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;padding:20px 4px;cursor:pointer;font:600 1.1rem/1.35 var(--sans);color:var(--spruce)}
+.faq button:focus-visible{outline:3px solid var(--lagoon);outline-offset:2px;border-radius:6px}
+.faq button .pm{flex:none;width:22px;height:22px;position:relative}
+.faq button .pm::before,.faq button .pm::after{content:"";position:absolute;left:3px;right:3px;top:50%;height:2.5px;margin-top:-1.25px;background:var(--lagoon-d);transition:transform .25s}
+.faq button .pm::after{transform:rotate(90deg)}
+.faq button[aria-expanded="true"] .pm::after{transform:rotate(0)}
+.faq .item{border-bottom:1px solid var(--mist-2)}
+.faq .ans{padding:0 4px 20px;color:var(--spruce-2);max-width:64ch}
+.faq .ans[hidden]{display:none}
+
+/* form */
+form.appt{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:18px}
+form.appt .full{grid-column:1/-1}
+@media (max-width:560px){form.appt{grid-template-columns:minmax(0,1fr)}}
+label,legend{display:block;font-weight:600;font-size:.95rem;margin-bottom:6px;padding:0}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;font:inherit;color:var(--spruce);background:var(--paper);border:1.5px solid #8fb1ac;border-radius:10px;padding:11px 12px;min-height:46px}
+textarea{min-height:84px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--lagoon);outline-offset:2px;border-color:var(--lagoon)}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radios label{margin:0;font-weight:500}
+.radios input{position:absolute;opacity:0;pointer-events:none}
+.radios span{display:inline-block;border:1.5px solid #8fb1ac;border-radius:999px;padding:9px 16px;cursor:pointer;background:var(--paper)}
+.radios input:checked+span{background:var(--spruce);color:#fff;border-color:var(--spruce)}
+.radios input:focus-visible+span{outline:3px solid var(--lagoon);outline-offset:2px}
+.check{display:flex;gap:10px;align-items:center;font-weight:500}
+.check input{width:20px;height:20px;accent-color:var(--lagoon-d);flex:none}
+.err-msg{color:#9b2c1c;font-size:.88rem;margin:6px 0 0}
+.hint{font-size:.85rem;color:var(--spruce-2);margin:8px 0 0}
+.confirm{display:none;background:var(--mist);border-radius:16px;padding:24px;margin-top:18px}
+.confirm.show{display:block}
+.confirm h3{font-size:1.6rem;margin-bottom:10px}
+.confirm dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:14px 0}
+.confirm dt{color:var(--spruce-2)}
+.confirm dd{margin:0;font-weight:600}
+.confirm .fine{font-size:.88rem;color:var(--spruce-2)}
+
+/* visit */
+.hours{margin:18px 0;display:grid;grid-template-columns:auto 1fr;gap:6px 26px}
+.hours dt{font-weight:600}.hours dd{margin:0;color:var(--spruce-2);font-variant-numeric:tabular-nums}
+address{font-style:normal;margin-bottom:16px}
+.map{width:100%;height:auto;display:block;border-radius:20px;border:1px solid var(--mist-2)}
+
+footer.foot{margin-top:clamp(64px,9vw,112px);background:var(--spruce);color:#C9DFDA;padding-block:36px 44px;font-size:.92rem}
+footer.foot .wrap{display:grid;gap:14px 40px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){footer.foot .wrap{grid-template-columns:1fr auto}}
+footer.foot a{color:#fff}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="ribbon">Concept site by Rodolfo Vargas. Fictional business. <a href="../../index.html">Back to portfolio</a></div>
+<header class="top"><div class="wrap">
+<a class="logo" href="#top" aria-label="Larkspur Family Dental, home">
+<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#1F7A7A"/><path d="M16 7c-2-1.6-6-1.4-7 2 -.8 3 .8 5.600 1.600 8.200.600 2 .8 6.800 2.800 6.800 1.800 0 1.400-4.200 2.600-4.200s.8 4.200 2.600 4.200c2 0 2.200-4.800 2.800-6.800.8-2.600 2.400-5.200 1.600-8.200-1-3.400-5-3.600-7-2z" fill="#fff" transform="translate(0 -.5)"/></svg>
+<span class="t">Larkspur Family Dental</span></a>
+<nav aria-label="Main"><a href="#services">Care</a><a href="#team">Dentists</a><a href="#new">New patients</a><a href="#faq">Questions</a><a href="#visit">Visit</a></nav>
+<a class="btn" href="#book">Book a visit</a>
+</div></header>
+<main id="main">
+
+<section class="hero" id="top" style="padding-top:clamp(40px,7vw,88px)"><div class="wrap">
+<div>
+<h1>Dentistry that never feels rushed.</h1>
+<p class="lead">Checkups, cleanings and fillings for children, parents and grandparents, in a quiet office on Haywood Road. We explain every step before we start.</p>
+<div class="cta"><a class="btn" href="#book">Request an appointment</a><a class="btn line" href="tel:+18285550134">Call (828) 555-0134</a></div>
+<ul class="facts"><li>New patients welcome</li><li>Same-week emergency visits</li><li>Evenings on Wednesday</li></ul>
+</div>
+<div class="scene">
+<svg class="bg" viewBox="0 0 520 520" role="img" aria-label="Illustration of a calm teal arch framing a friendly tooth with small sparkles">
+<rect width="520" height="520" rx="36" fill="#DDEBE7"/>
+<path d="M60 520V270a200 200 0 0 1 400 0v250z" fill="#C9DFDA"/>
+<path d="M110 520V275a150 150 0 0 1 300 0v245z" fill="#F4F8F6"/>
+<circle cx="408" cy="104" r="46" fill="#F2C35B"/>
+<path d="M260 190c-34-26-100-22-114 34-12 48 14 88 26 132 10 34 12 100 44 100 28 0 22-66 44-66s16 66 44 66c32 0 34-66 44-100 12-44 38-84 26-132-14-56-80-60-114-34z" fill="#fff" stroke="#10393A" stroke-width="5" stroke-linejoin="round" transform="translate(0 -10)"/>
+<path d="M200 230c14-10 34-8 46 2" fill="none" stroke="#C9DFDA" stroke-width="7" stroke-linecap="round" transform="translate(0 -10)"/>
+<g class="sparkle" fill="#1F7A7A"><path d="M120 150l8 18 18 8-18 8-8 18-8-18-18-8 18-8z"/></g>
+<g class="sparkle s2" fill="#1F7A7A"><path d="M390 250l6 13 13 6-13 6-6 13-6-13-13-6 13-6z"/></g>
+<path d="M0 470h520" stroke="#10393A" stroke-width="0"/>
+</svg>
+<div class="next" role="group" aria-labelledby="next-h">
+<h2 id="next-h">Next openings this week</h2>
+<div class="chips" id="chips"></div>
+</div>
+</div>
+</div></section>
+
+<section id="services"><div class="wrap">
+<h2>Care for every stage</h2>
+<p class="sec-intro">Most visits take less than an hour. Prices are shared before any treatment, in writing.</p>
+<div class="svc">
+<div class="item"><h3>Checkup and cleaning</h3><p>A gentle cleaning, a full exam and digital X-rays when needed. Twice a year keeps small problems small.</p><span class="time">50 minutes</span></div>
+<div class="item"><h3>Fillings and crowns</h3><p>Tooth-colored fillings placed in a single visit. Crowns are made in our office, so there is no second trip.</p><span class="time">60 to 90 minutes</span></div>
+<div class="item"><h3>Children's dentistry</h3><p>First visits that start with a ride in the chair and a look at the tools. Sealants and fluoride for growing teeth.</p><span class="time">30 minutes</span></div>
+<div class="item"><h3>Whitening</h3><p>In-office whitening in one visit, or custom trays to use at home at your own pace.</p><span class="time">60 minutes</span></div>
+<div class="item"><h3>Clear aligners and braces</h3><p>A free consultation, a 3D scan of your teeth and a plan you can see before you decide.</p><span class="time">30 minutes</span></div>
+<div class="item"><h3>Emergency visits</h3><p>Broken tooth, lost filling or a toothache that will not wait. Call before 3 p.m. and we will see you the same day.</p><span class="time">Same day</span></div>
+</div>
+</div></section>
+
+<section class="team" id="team"><div class="wrap">
+<h2>Your dentists</h2>
+<p class="sec-intro">Three dentists who live in the neighborhood and have been caring for local families for years.</p>
+<div class="grid">
+<article class="person">
+<svg viewBox="0 0 220 240" role="img" aria-label="Portrait illustration of Dr. Hannah Okafor"><rect width="220" height="240" rx="24" fill="#DDEBE7"/><circle cx="110" cy="96" r="44" fill="#8A5A3C"/><path d="M62 92c0-34 24-52 48-52s48 18 48 52c-10-16-24-24-48-24s-38 8-48 24z" fill="#1d1a19"/><path d="M40 240c0-52 30-84 70-84s70 32 70 84z" fill="#fff"/><path d="M92 160l18 28 18-28" fill="none" stroke="#1F7A7A" stroke-width="5"/></svg>
+<h3>Dr. Hannah Okafor</h3><p class="role">General and family dentistry</p>
+<p>Leads our practice. Known for calm first visits and for explaining X-rays in plain words.</p>
+</article>
+<article class="person">
+<svg viewBox="0 0 220 240" role="img" aria-label="Portrait illustration of Dr. Miguel Santoro"><rect width="220" height="240" rx="24" fill="#C9DFDA"/><circle cx="110" cy="96" r="44" fill="#D9A67E"/><path d="M64 88c2-30 22-44 46-44s44 14 46 44c-8-10-20-14-46-14s-38 4-46 14z" fill="#4a3426"/><path d="M40 240c0-52 30-84 70-84s70 32 70 84z" fill="#1F7A7A"/><path d="M92 160l18 24 18-24" fill="#fff"/></svg>
+<h3>Dr. Miguel Santoro</h3><p class="role">Restorative and cosmetic care</p>
+<p>Crowns, whitening and smile makeovers, with a careful eye for natural color and shape.</p>
+</article>
+<article class="person">
+<svg viewBox="0 0 220 240" role="img" aria-label="Portrait illustration of Dr. Priya Raman"><rect width="220" height="240" rx="24" fill="#F6E7BE"/><circle cx="110" cy="96" r="44" fill="#B97D56"/><path d="M60 98c-6-44 22-60 50-60s56 16 50 60c-6-18-14-34-50-34s-44 16-50 34z" fill="#241a1a"/><path d="M40 240c0-52 30-84 70-84s70 32 70 84z" fill="#10393A"/><path d="M92 160l18 24 18-24" fill="#fff"/></svg>
+<h3>Dr. Priya Raman</h3><p class="role">Pediatric dentistry and orthodontics</p>
+<p>Makes the chair a friendly place for kids, and plans braces and aligners for teens and adults.</p>
+</article>
+</div>
+</div></section>
+
+<section id="new"><div class="wrap two">
+<div class="panel">
+<h2>Insurance and payment</h2>
+<p>We file claims for you and tell you what your plan covers before treatment begins. We are in network with these fictional plans:</p>
+<ul class="plans"><li>Blue Ridge Mutual PPO</li><li>Summit Health Choice</li><li>Carolina Dental Alliance</li><li>Pinecrest Benefits</li></ul>
+<p>No insurance? Our membership is $29 a month and includes two cleanings, exams and X-rays each year, plus 20 percent off other care. We also offer payment plans with no interest.</p>
+</div>
+<div class="panel">
+<h2>Your first visit</h2>
+<ol class="steps">
+<li><strong>Request a time</strong><span>Use the form below or call us. We reply within one business day.</span></li>
+<li><strong>Fill out forms at home</strong><span>We send a short health form by email so you can skip the clipboard.</span></li>
+<li><strong>Come in for an hour</strong><span>Exam, X-rays, a cleaning if time allows, and a clear plan with costs. Please bring your insurance card.</span></li>
+</ol>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Questions we hear often</h2>
+<div class="faq" id="faq-list">
+<div class="item"><h3><button type="button" aria-expanded="false" aria-controls="a1" id="q1">Will it hurt?<span class="pm" aria-hidden="true"></span></button></h3><div class="ans" id="a1" role="region" aria-labelledby="q1" hidden>Most cleanings and fillings are painless. We numb the area well before any treatment and you can raise a hand to pause at any time.</div></div>
+<div class="item"><h3><button type="button" aria-expanded="false" aria-controls="a2" id="q2">How often should I come in?<span class="pm" aria-hidden="true"></span></button></h3><div class="ans" id="a2" role="region" aria-labelledby="q2" hidden>Most people do well with a checkup and cleaning every six months. If you have gum disease or a lot of dental work, we may suggest every three or four months.</div></div>
+<div class="item"><h3><button type="button" aria-expanded="false" aria-controls="a3" id="q3">I have not been to a dentist in years. Is that okay?<span class="pm" aria-hidden="true"></span></button></h3><div class="ans" id="a3" role="region" aria-labelledby="q3" hidden>Yes, and you are in good company. We do not lecture. We look, explain what we see and build a plan at a pace you choose.</div></div>
+<div class="item"><h3><button type="button" aria-expanded="false" aria-controls="a4" id="q4">What if I have a dental emergency?<span class="pm" aria-hidden="true"></span></button></h3><div class="ans" id="a4" role="region" aria-labelledby="q4" hidden>Call (828) 555-0134 as early as you can. If you call before 3 p.m. on a weekday we keep a slot open to see you the same day.</div></div>
+<div class="item"><h3><button type="button" aria-expanded="false" aria-controls="a5" id="q5">Do you see children?<span class="pm" aria-hidden="true"></span></button></h3><div class="ans" id="a5" role="region" aria-labelledby="q5" hidden>Yes, from a first birthday on. Dr. Raman recommends a short, friendly first visit so little ones get used to the chair before they need anything done.</div></div>
+</div>
+</div></section>
+
+<section id="book"><div class="wrap two">
+<div class="panel">
+<h2>Request an appointment</h2>
+<p>Tell us what works. We will call or email within one business day to confirm.</p>
+<form class="appt" id="appt-form" novalidate>
+<div class="full"><label for="a-name">Full name</label><input type="text" id="a-name" autocomplete="name" required><p class="err-msg" id="e-name"></p></div>
+<div><label for="a-phone">Phone</label><input type="tel" id="a-phone" autocomplete="tel" placeholder="(828) 555-0100" required><p class="err-msg" id="e-phone"></p></div>
+<div><label for="a-email">Email</label><input type="email" id="a-email" autocomplete="email" placeholder="you@example.com"></div>
+<div class="full"><label for="a-svc">Reason for visit</label><select id="a-svc"><option>Checkup and cleaning</option><option>Toothache or emergency</option><option>Fillings and crowns</option><option>Children's visit</option><option>Whitening</option><option>Aligners or braces consultation</option><option>Not sure yet</option></select></div>
+<div class="full"><fieldset><legend>Best time of day</legend><div class="radios">
+<label><input type="radio" name="tod" value="Morning" checked><span>Morning</span></label>
+<label><input type="radio" name="tod" value="Afternoon"><span>Afternoon</span></label>
+<label><input type="radio" name="tod" value="Evening"><span>Wednesday evening</span></label>
+</div></fieldset></div>
+<div class="full"><label for="a-slot">Preferred day or opening</label><input type="text" id="a-slot" placeholder="Pick an opening above or type a day"></div>
+<div class="full"><label class="check"><input type="checkbox" id="a-new" checked> I am a new patient</label></div>
+<div class="full"><button class="btn" type="submit">Send request</button><p class="hint">Demo form. Nothing is sent or saved. In an emergency, call 911 or the office.</p></div>
+</form>
+<div class="confirm" id="appt-ok" role="status" tabindex="-1">
+<h3>Request received</h3>
+<p>Thank you, <span id="c-name"></span>. The office would reply within one business day.</p>
+<dl><dt>Visit</dt><dd id="c-svc"></dd><dt>Time</dt><dd id="c-time"></dd><dt>Contact</dt><dd id="c-contact"></dd></dl>
+<p class="fine">This is a concept site. Nothing was sent and no appointment exists.</p>
+<button class="btn line" type="button" id="appt-again">Send another request</button>
+</div>
+</div>
+<div id="visit">
+<h2>Hours and location</h2>
+<dl class="hours">
+<dt>Monday, Tuesday, Thursday</dt><dd>8:00 am to 5:00 pm</dd>
+<dt>Wednesday</dt><dd>10:00 am to 7:00 pm</dd>
+<dt>Friday</dt><dd>8:00 am to 1:00 pm</dd>
+<dt>Saturday, Sunday</dt><dd>Closed</dd>
+</dl>
+<address>Larkspur Family Dental<br>412 Haywood Road, Suite 2<br>Asheville, NC 28806<br><a href="tel:+18285550134">(828) 555-0134</a><br><a href="mailto:smile@example.com">smile@example.com</a></address>
+<svg class="map" viewBox="0 0 560 360" role="img" aria-label="Simplified map showing Larkspur Family Dental on Haywood Road, between Sycamore Lane and Birch Street, with free parking behind the building and a bus stop in front.">
+<rect width="560" height="360" fill="#DDEBE7"/>
+<path d="M0 285 C110 250 200 310 300 282 S480 250 560 276 V360 H0z" fill="#BFD9E0"/>
+<g fill="#C9DFDA"><rect x="24" y="24" width="150" height="90" rx="8"/><rect x="204" y="24" width="150" height="90" rx="8"/><rect x="384" y="24" width="150" height="90" rx="8"/><rect x="24" y="168" width="150" height="82" rx="8"/><rect x="384" y="168" width="150" height="82" rx="8"/></g>
+<rect x="204" y="168" width="150" height="82" rx="8" fill="#fff"/>
+<rect x="24" y="130" width="512" height="22" fill="#fff"/>
+<rect x="186" y="14" width="14" height="250" fill="#fff"/><rect x="366" y="14" width="14" height="250" fill="#fff"/>
+<g font-family="Hanken Grotesk,sans-serif" font-size="13" fill="#3D5C5B"><text x="280" y="146" text-anchor="middle">Haywood Road</text><text transform="translate(197,70) rotate(-90)" text-anchor="middle">Sycamore Lane</text><text transform="translate(377,70) rotate(-90)" text-anchor="middle">Birch Street</text></g>
+<g font-family="Hanken Grotesk,sans-serif" font-size="12" fill="#10393A"><text x="38" y="214">Free parking lot</text><text x="398" y="214">Bus stop</text></g>
+<rect x="38" y="222" width="22" height="22" rx="5" fill="#1F7A7A"/><text x="49" y="238" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-weight="700" font-size="14" fill="#fff">P</text>
+<circle cx="480" cy="226" r="11" fill="#F2C35B"/>
+<g transform="translate(279,196)"><path d="M0 -44c-15 0-27 12-27 27 0 20 27 47 27 47s27-27 27-47c0-15-12-27-27-27z" fill="#10393A"/><circle cy="-17" r="10" fill="#fff"/></g>
+<text x="279" y="238" text-anchor="middle" font-family="Lora,serif" font-weight="600" font-size="15" fill="#10393A">Larkspur</text>
+</svg>
+</div>
+</div></section>
+
+</main>
+<footer class="foot"><div class="wrap">
+<div>Larkspur Family Dental, 412 Haywood Road, Suite 2, Asheville, NC 28806. <a href="tel:+18285550134">(828) 555-0134</a></div>
+<div>Concept site by Rodolfo Vargas. Fictional business. <a href="../../index.html">Back to portfolio</a></div>
+</div></footer>
+<script>
+(function(){
+  /* openings */
+  var slots=['Tue 9:40 am','Wed 1:15 pm','Wed 5:30 pm','Thu 8:30 am'];
+  var chips=document.getElementById('chips'),slot=document.getElementById('a-slot');
+  slots.forEach(function(s){
+    var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=s;
+    b.addEventListener('click',function(){slot.value=s;document.getElementById('book').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});document.getElementById('a-name').focus({preventScroll:true});});
+    chips.appendChild(b);
+  });
+  /* faq */
+  document.querySelectorAll('#faq-list button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var open=b.getAttribute('aria-expanded')==='true';
+      b.setAttribute('aria-expanded',String(!open));
+      document.getElementById(b.getAttribute('aria-controls')).hidden=open;
+    });
+  });
+  /* form */
+  var f=document.getElementById('appt-form'),ok=document.getElementById('appt-ok');
+  function set(id,m){document.getElementById(id).textContent=m}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('a-name').value.trim(),p=document.getElementById('a-phone').value.trim(),em=document.getElementById('a-email').value.trim();
+    set('e-name',n?'':'Enter your full name.');
+    set('e-phone',p.replace(/\D/g,'').length>=10?'':'Enter a phone number with area code.');
+    if(!n){document.getElementById('a-name').focus();return}
+    if(p.replace(/\D/g,'').length<10){document.getElementById('a-phone').focus();return}
+    var tod=f.querySelector('input[name=tod]:checked').value,sl=slot.value.trim();
+    document.getElementById('c-name').textContent=n.split(' ')[0];
+    document.getElementById('c-svc').textContent=document.getElementById('a-svc').value+(document.getElementById('a-new').checked?' (new patient)':'');
+    document.getElementById('c-time').textContent=sl?sl+', '+tod.toLowerCase():tod+', first available';
+    document.getElementById('c-contact').textContent=em?p+' and '+em:p;
+    f.style.display='none';ok.classList.add('show');ok.focus();
+  });
+  document.getElementById('appt-again').addEventListener('click',function(){
+    f.reset();set('e-name','');set('e-phone','');ok.classList.remove('show');f.style.display='';document.getElementById('a-name').focus();
+  });
+})();
+</script>
+</body>
+</html>
