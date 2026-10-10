@@ -111,8 +111,9 @@ code {
 .theme-btn:hover { border-color: var(--accent); }
 @media (max-width: 640px) {
   .brand { display: none; }
-  .site-head nav { margin-left: 0; gap: 4px 9px; margin-right: auto; }
-  .site-head nav a { font-size: 0.84rem; padding-block: 12px; }
+  .site-head nav a[href$="#stack"] { display: none; }
+  .site-head nav { margin-left: 0; gap: 4px 6px; margin-right: auto; }
+  .site-head nav a { font-size: 0.8rem; padding-block: 12px; }
   .theme-btn { padding: 9px 10px; font-size: 0.84rem; }
   .site-head .wrap { gap: 8px; }
 }
@@ -330,3 +331,9 @@ html.anim .chapter-text { margin-top: 24px; will-change: opacity, transform; }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }
+
+/* services */
+.services-sub { margin-top: 40px; font-size: 1.25rem; }
+.services-list { margin: 12px 0 0; padding-left: 1.25rem; color: var(--muted); font-size: 1.0625rem; max-width: 56ch; }
+.services-list li { margin-block: 6px; }
+.services-block .links { margin-top: 32px; }
