@@ -1,5 +1,32 @@
 (function () {
   var root = document.documentElement;
+
+  /* language preference: only the English home may redirect, once, to its Spanish
+     counterpart. The preference is written before the redirect, so the Spanish home
+     (which never redirects) cannot send the visitor back. */
+  var LANG_KEY = "portfolio.lang";
+  (function rememberedLanguage() {
+    if (root.getAttribute("data-page") !== "home" || root.getAttribute("lang") !== "en") return;
+    if (navigator.webdriver) return;
+    var pref;
+    try { pref = localStorage.getItem(LANG_KEY); } catch (e) { return; }
+    if (pref !== "en" && pref !== "es") {
+      var first = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+      pref = /^es(-|$)/i.test(first) ? "es" : "en";
+      try { localStorage.setItem(LANG_KEY, pref); } catch (e) { return; }
+    }
+    var alt = root.getAttribute("data-lang-alt");
+    if (pref === "es" && alt) location.replace(new URL(alt, location.href).href + location.hash);
+  })();
+
+  /* a click on the switch stores the choice before the browser follows the link */
+  document.addEventListener("click", function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest(".lang-switch a[data-lang]") : null;
+    var lang = a && a.getAttribute("data-lang");
+    if (lang !== "en" && lang !== "es") return;
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+  });
+
   try {
     var saved = localStorage.getItem("theme");
     if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
@@ -24,10 +51,16 @@
   document.addEventListener("DOMContentLoaded", function () {
     /* theme toggle */
     var btn = document.getElementById("theme-toggle");
+    /* the button text comes from the page (data attributes), never from this script */
     function label() {
+      var lightLabel = btn.getAttribute("data-label-to-light");
+      var darkLabel = btn.getAttribute("data-label-to-dark");
+      var lightAria = btn.getAttribute("data-aria-to-light");
+      var darkAria = btn.getAttribute("data-aria-to-dark");
+      if (lightLabel === null || darkLabel === null || lightAria === null || darkAria === null) return;
       var dark = current() === "dark";
-      btn.textContent = dark ? "Light" : "Dark";
-      btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+      btn.textContent = dark ? lightLabel : darkLabel;
+      btn.setAttribute("aria-label", dark ? lightAria : darkAria);
     }
     if (btn) {
       label();

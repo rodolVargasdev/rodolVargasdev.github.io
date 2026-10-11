@@ -109,13 +109,19 @@ code {
   border: 1px solid var(--rule); border-radius: 999px; padding: 5px 14px; cursor: pointer; white-space: nowrap;
 }
 .theme-btn:hover { border-color: var(--accent); }
+.lang-switch { display: flex; flex: none; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
+.lang-switch a { color: var(--ink); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 5px 11px; opacity: 0.7; }
+.lang-switch a:hover { opacity: 1; }
+.lang-switch a[aria-current="true"] { opacity: 1; background: var(--rule); }
 @media (max-width: 640px) {
+  .lang-switch a { font-size: 0.75rem; padding: 9px 6px; }
   .brand { display: none; }
-  .site-head nav a[href$="#stack"] { display: none; }
+  html[data-page="404"] .brand { display: block; }
+  .site-head nav a[href$="#stack"], .site-head nav a[href$="#services"] { display: none; }
   .site-head nav { margin-left: 0; gap: 4px 6px; margin-right: auto; }
   .site-head nav a { font-size: 0.8rem; padding-block: 12px; }
-  .theme-btn { padding: 9px 10px; font-size: 0.84rem; }
-  .site-head .wrap { gap: 8px; }
+  .theme-btn { padding: 9px 8px; font-size: 0.75rem; }
+  .site-head .wrap { gap: 6px; }
 }
 
 /* type */
@@ -264,6 +270,8 @@ section.part > h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); letter-spacing: -0.
 
 .err { padding-block: 160px 80px; }
 .err h1 { font-size: clamp(2.4rem, 8vw, 5rem); margin-bottom: 16px; }
+.err:not(:last-child) { padding-bottom: 0; }
+.err + .err { padding-block-start: 56px; }
 
 /* ---------- motion layer: only when JS runs and motion is allowed ---------- */
 html.anim .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
@@ -300,7 +308,7 @@ html.anim .steps li.human::before { background: none; color: var(--approval); }
 html.anim .steps strong { font-size: clamp(1.4rem, 3vw, 2.4rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; }
 html.anim .steps span { font-size: 1.0625rem; max-width: 40ch; }
 html.anim .steps li.human::after {
-  content: "A person decides"; align-self: flex-start; background: var(--approval); color: var(--on-approval);
+  content: attr(data-badge); align-self: flex-start; background: var(--approval); color: var(--on-approval);
   font-size: 0.85rem; font-weight: 600; border-radius: 999px; padding: 3px 12px; margin-top: 4px;
 }
 @media (max-width: 899px) {
